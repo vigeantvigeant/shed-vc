@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shed — Very small angel investments from very good founders</title>
+    <meta name="description" content="Very small angel investments from very good founders.">
+    <meta property="og:title" content="Shed">
+    <meta property="og:description" content="Very small angel investments from very good founders.">
+    <meta property="og:url" content="https://shed.vc">
+    <link rel="icon" type="image/svg+xml" href="img/logo-favicon.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #E8695C;
+            color: #FBDAD6;
+            font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 80px 24px 60px;
+        }
+
+        /* Hero */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 72px;
+        }
+
+        .logo-img {
+            height: 500px;
+            margin-bottom: 12px;
+        }
+
+        .wordmark {
+            font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
+            font-size: 52px;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #FBDAD6;
+        }
+
+        .tagline {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: 400;
+            color: #FBDAD6;
+            text-align: center;
+            max-width: 480px;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+
+        /* Investments */
+        .investments {
+            width: 100%;
+            max-width: 740px;
+            margin-bottom: 80px;
+        }
+
+        .investments h2 {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: #FBDAD6;
+            opacity: 0.6;
+            margin-bottom: 36px;
+            text-align: center;
+        }
+
+        .investment-grid {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .investment-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #FBDAD6;
+            transition: transform 0.2s ease;
+            width: 180px;
+        }
+
+        .investment-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .investment-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            background: rgba(251, 218, 214, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            overflow: hidden;
+            padding: 14px;
+        }
+
+        .investment-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+
+        .investment-name {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .investment-detail {
+            font-size: 13px;
+            opacity: 0.6;
+            text-align: center;
+        }
+
+        .investment-multiple {
+            font-size: 13px;
+            font-style: italic;
+            opacity: 0.6;
+            text-align: center;
+            margin-top: 2px;
+        }
+
+        /* Contact */
+        .contact {
+            text-align: center;
+            max-width: 520px;
+            line-height: 1.7;
+        }
+
+        .contact p {
+            font-size: 16px;
+            color: #FBDAD6;
+        }
+
+        .contact a {
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
+        }
+
+        .contact .bio {
+            font-size: 14px;
+            opacity: 0.6;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 60px 20px 40px;
+            }
+
+            .logo-img {
+                height: 300px;
+            }
+
+            .wordmark {
+                font-size: 36px;
+            }
+
+            .tagline {
+                font-size: 16px;
+            }
+
+            .investment-grid {
+                gap: 32px;
+            }
+
+            .investment-card {
+                width: 140px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <img class="logo-img" src="img/logo.png" alt="Shed logo">
+        <p class="tagline">Very small angel investments from very good founders</p>
+    </section>
+
+    <section class="investments">
+        <h2>Our Three Favourite Investments</h2>
+        <div class="investment-grid">
+            <a class="investment-card" href="https://runner.now/" target="_blank" rel="noopener">
+                <div class="investment-logo">
+                    <img src="img/runner-white.svg" alt="Runner logo">
+                </div>
+                <div class="investment-name">Runner</div>
+                <div class="investment-detail">Third cheque in</div>
+                <div class="investment-multiple">4x investor</div>
+            </a>
+            <a class="investment-card" href="https://www.callhyper.com/" target="_blank" rel="noopener">
+                <div class="investment-logo">
+                    <img src="img/hyper.png" alt="Hyper logo">
+                </div>
+                <div class="investment-name">Hyper</div>
+                <div class="investment-detail">First cheque in</div>
+                <div class="investment-multiple">2x investor</div>
+            </a>
+            <a class="investment-card" href="https://www.taiv.tv/" target="_blank" rel="noopener">
+                <div class="investment-logo">
+                    <img src="img/taiv.svg" alt="Taiv logo">
+                </div>
+                <div class="investment-name">Taiv</div>
+                <div class="investment-detail">Late to the party</div>
+                <div class="investment-multiple">3x investor</div>
+            </a>
+        </div>
+    </section>
+
+    <section class="contact">
+        <p>A labour of love from <a href="mailto:luke@shed.vc">Luke Vigeant</a></p>
+    </section>
+
+</body>
+</html>
