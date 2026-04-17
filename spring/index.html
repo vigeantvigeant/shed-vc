@@ -2072,6 +2072,61 @@
 
   .thanks-email:hover .at { color: var(--ink); }
 
+  .thanks-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: softFade 1s 1.3s forwards;
+  }
+
+  /* Reset email-button animation since it now lives inside .thanks-actions */
+  .thanks-actions .thanks-email { animation: none; opacity: 1; }
+
+  .thanks-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(14px, 1.55vw, 16px);
+    color: var(--bone-dim);
+    text-decoration: none;
+    padding: 14px 22px;
+    border: 1px solid var(--hair-gold);
+    background: transparent;
+    transition: all 0.3s ease;
+    letter-spacing: 0.005em;
+  }
+
+  .thanks-download:hover {
+    color: var(--bone);
+    border-color: var(--gold);
+    background: rgba(184, 151, 95, 0.06);
+  }
+
+  .thanks-download .icon {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--gold);
+    line-height: 1;
+    font-style: normal;
+  }
+
+  .thanks-download-meta {
+    font-family: var(--sans);
+    font-style: normal;
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--bone-faint);
+    padding-left: 12px;
+    margin-left: 4px;
+    border-left: 1px solid var(--hair-gold);
+  }
+
   .thanks-sign {
     margin-top: 40px;
     font-family: var(--serif);
@@ -2269,6 +2324,9 @@
     .thanks-divider { height: 36px; margin: 22px auto 24px; }
     .thanks-body { font-size: 16px; margin-bottom: 28px; }
     .thanks-email { font-size: 17px; padding: 13px 22px; }
+    .thanks-actions { flex-direction: column; gap: 12px; }
+    .thanks-download { font-size: 13px; padding: 12px 18px; }
+    .thanks-download-meta { font-size: 8px; padding-left: 10px; letter-spacing: 0.22em; }
     .thanks-sign { margin-top: 28px; font-size: 13px; }
 
     /* About Me slide */
@@ -2337,6 +2395,61 @@
     .nav { bottom: 18px; gap: 14px; }
     .nav-btn { width: 34px; height: 34px; font-size: 18px; }
     .nav-hint { display: none; }
+  }
+
+  /* ============ Print mode ============
+     Activated when ?pdf=1 is appended to the URL, or when the page is printed.
+     Renders every slide stacked as separate landscape pages. */
+  body.print-mode { overflow: visible !important; height: auto !important; }
+  body.print-mode .gate,
+  body.print-mode .chrome,
+  body.print-mode .nav,
+  body.print-mode .progress { display: none !important; }
+  body.print-mode .deck { display: block !important; }
+  body.print-mode .slide {
+    display: flex !important;
+    page-break-after: always;
+    break-after: page;
+    min-height: 900px;
+    height: 900px;
+    width: 1440px;
+    padding: 80px 72px;
+    animation: none !important;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+  }
+  body.print-mode .slide:last-child { page-break-after: auto; }
+  body.print-mode .slide .slide-chapter,
+  body.print-mode .slide *,
+  body.print-mode .slide *::before,
+  body.print-mode .slide *::after {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  body.print-mode .slide .but-tease,
+  body.print-mode .slide .but-tease-btn,
+  body.print-mode .slide .but-tease-btn::before { display: none !important; }
+
+  @media print {
+    @page { size: 1440px 900px; margin: 0; }
+    body { overflow: visible !important; height: auto !important; background: #0A0A0A !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .gate, .chrome, .nav, .progress { display: none !important; }
+    .deck { display: block !important; }
+    .slide {
+      display: flex !important;
+      page-break-after: always;
+      break-after: page;
+      min-height: 900px;
+      height: 900px;
+      width: 1440px;
+      padding: 80px 72px;
+      overflow: hidden;
+      animation: none !important;
+    }
+    .slide:last-child { page-break-after: auto; }
+    .but-tease-btn::before { animation: none !important; }
   }
 
   @media (max-width: 380px) {
@@ -2554,7 +2667,7 @@
             <div class="dl-body">
               <div class="dl-label">Download</div>
               <div class="dl-title">Regenture — Pitch Deck</div>
-              <div class="dl-meta">46 pages · 4.4&nbsp;MB · PDF</div>
+              <div class="dl-meta">21 pages · 4.4&nbsp;MB · PDF</div>
             </div>
           </a>
           <a class="download-card" href="downloads/Regenture-Full-Report.pdf" download>
@@ -2562,7 +2675,7 @@
             <div class="dl-body">
               <div class="dl-label">Download</div>
               <div class="dl-title">Regenture — Full Report</div>
-              <div class="dl-meta">164 pages · 16&nbsp;MB · PDF</div>
+              <div class="dl-meta">93 pages · 16&nbsp;MB · PDF</div>
             </div>
           </a>
         </div>
@@ -2829,9 +2942,17 @@
         This document is a <em>first draft</em> of thoughts on how I can add value to Spring. I hope that through continued conversations it can be refined — and that we find ourselves <span class="gold">working together by Q4</span>.
       </p>
 
-      <a class="thanks-email" href="mailto:luke@shed.vc">
-        <span>luke<span class="at">@</span>shed.vc</span>
-      </a>
+      <div class="thanks-actions">
+        <a class="thanks-email" href="mailto:luke@shed.vc">
+          <span>luke<span class="at">@</span>shed.vc</span>
+        </a>
+
+        <a class="thanks-download" href="downloads/Spring-Seed-Fund-Concept.pdf" download>
+          <span class="icon" aria-hidden="true">↓</span>
+          <span>Download the full PDF</span>
+          <span class="thanks-download-meta">123 pages · incl. appendices</span>
+        </a>
+      </div>
 
       <div class="thanks-sign">
         Looking forward to our next conversation.<br>
@@ -2939,12 +3060,22 @@
     if (typeof resetToFirst === 'function') resetToFirst();
   }
 
-  try {
-    if (sessionStorage.getItem(SESSION_KEY) === 'ok' ||
-        localStorage.getItem(SESSION_KEY) === 'ok') {
-      showDeck();
-    }
-  } catch (e) { /* storage blocked */ }
+  // Print mode: ?pdf=1 bypasses the gate entirely and renders all slides
+  // stacked, one per page (used by the headless Chrome PDF generator).
+  const isPrintMode = new URLSearchParams(window.location.search).get('pdf') === '1';
+  if (isPrintMode) {
+    document.body.classList.add('print-mode');
+    const deck = document.getElementById('deck');
+    deck.classList.add('visible');
+    document.getElementById('gate').classList.add('hidden');
+  } else {
+    try {
+      if (sessionStorage.getItem(SESSION_KEY) === 'ok' ||
+          localStorage.getItem(SESSION_KEY) === 'ok') {
+        showDeck();
+      }
+    } catch (e) { /* storage blocked */ }
+  }
 
   const form = document.getElementById('gate-form');
   const emailInput = document.getElementById('gate-email');
@@ -2981,6 +3112,24 @@
         try {
           localStorage.setItem(SESSION_KEY, 'ok');
           sessionStorage.setItem(SESSION_KEY, 'ok');
+        } catch(_) {}
+        // Notify Luke that someone just accessed the deck — fire-and-forget.
+        // Formspree accepts JSON POSTs; we don't await it so login is instant
+        // even if the service is slow/unreachable.
+        try {
+          fetch('https://formspree.io/f/xaqaodrb', {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+            body: JSON.stringify({
+              email,
+              event: 'Spring deck login',
+              timestamp: new Date().toISOString(),
+              userAgent: navigator.userAgent,
+              referrer: document.referrer || '(direct)',
+              _subject: `Spring deck login — ${email}`,
+            }),
+          }).catch(() => {});
         } catch(_) {}
         submitBtn.textContent = 'Welcome';
         setTimeout(showDeck, 360);
