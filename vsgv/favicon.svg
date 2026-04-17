@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="e" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F12C8E"/>
+      <stop offset="30%" stop-color="#6B3FA0"/>
+      <stop offset="55%" stop-color="#3AB8F2"/>
+      <stop offset="78%" stop-color="#2FD0C5"/>
+      <stop offset="100%" stop-color="#F8E532"/>
+    </linearGradient>
+  </defs>
+  <path d="M30 46 Q30 36 42 34 L158 34 Q170 36 170 46 L170 168 Q170 178 158 178 L42 178 Q30 178 30 168 Z"
+        fill="#FFFBF2" stroke="url(#e)" stroke-width="10" stroke-linejoin="round"/>
+  <text x="100" y="120" text-anchor="middle"
+        font-family="Fraunces, Georgia, serif" font-size="54" font-weight="800"
+        letter-spacing="-2" fill="#F12C8E">V</text>
+</svg>

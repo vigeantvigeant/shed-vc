@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VSGV — Very Strong Gummy Ventures</title>
+<meta name="description" content="A private deck for the proposed collaboration between Jillian Muller and Luke Vigeant.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&display=swap">
+<style>
+  :root {
+    /* Base — montecito warmth, sand, cream */
+    --sand:        #F6EFE3;
+    --sand-deep:   #ECE1CC;
+    --paper:       #FFFBF2;
+    --ink:         #2B1E14;
+    --ink-2:       #4A372A;
+    --ink-soft:    #6F5845;
+    --hair:        rgba(43, 30, 20, 0.14);
+    --hair-soft:   rgba(43, 30, 20, 0.06);
+
+    /* Gummy palette — straight off the pouch */
+    --pink:        #F12C8E;
+    --pink-deep:   #C9127B;
+    --pink-soft:   #FFB4D5;
+    --yellow:      #F8E532;
+    --yellow-deep: #E6BC1A;
+    --teal:        #2FD0C5;
+    --teal-deep:   #15A79C;
+    --lime:        #A9E84B;
+    --violet:      #6B3FA0;
+    --cyan:        #3AB8F2;
+
+    --serif: 'Fraunces', 'Playfair Display', 'Adobe Garamond Pro', Garamond, 'Times New Roman', serif;
+    --sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+
+    --rainbow: linear-gradient(
+      92deg,
+      #F12C8E 0%,
+      #C9127B 18%,
+      #6B3FA0 34%,
+      #3AB8F2 50%,
+      #2FD0C5 64%,
+      #A9E84B 78%,
+      #F8E532 100%
+    );
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    background: var(--sand);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 400;
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection { background: var(--pink); color: var(--paper); }
+
+  /* Paper grain */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.08;
+    z-index: 200;
+    background-image:
+      radial-gradient(circle at 18% 28%, rgba(43,30,20,0.9) 0.5px, transparent 1.2px),
+      radial-gradient(circle at 72% 58%, rgba(43,30,20,0.6) 0.5px, transparent 1.2px),
+      radial-gradient(circle at 42% 82%, rgba(43,30,20,0.7) 0.5px, transparent 1.2px);
+    background-size: 3px 3px, 5px 5px, 7px 7px;
+    mix-blend-mode: multiply;
+  }
+
+  /* Ambient warmth */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 12% 0%,   rgba(241, 44, 142, 0.10) 0%, transparent 55%),
+      radial-gradient(ellipse 70% 50% at 90% 10%,  rgba(47, 208, 197, 0.10) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 40% at 50% 100%, rgba(248, 229, 50, 0.08) 0%, transparent 55%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ===================== Shared type ===================== */
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--pink-deep);
+  }
+
+  .rainbow-text {
+    background: var(--rainbow);
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+            color: transparent;
+  }
+
+  /* ===================== GATE ===================== */
+  .gate {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 56px 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .gate.hidden { display: none; }
+
+  .gate-mark {
+    position: absolute;
+    top: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.52em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .gate-mark::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 30px;
+    background: var(--pink);
+    margin: 16px auto 0;
+    opacity: 0.6;
+  }
+
+  .gate-card {
+    width: 100%;
+    max-width: 480px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(14px);
+    animation: fadeUp 1.1s 0.15s cubic-bezier(.2,.8,.2,1) forwards;
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .gate-pouch {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 28px;
+    display: block;
+  }
+
+  .gate-eyebrow { display: inline-block; margin-bottom: 22px; }
+
+  .gate-title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(38px, 5.6vw, 56px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+
+  .gate-title em {
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .gate-sub {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--ink-soft);
+    letter-spacing: 0.005em;
+    margin-bottom: 44px;
+  }
+
+  .gate-form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    text-align: left;
+  }
+
+  .field { position: relative; }
+
+  .field label {
+    display: block;
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+
+  .field input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--hair);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    font-weight: 400;
+    padding: 6px 0 12px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    letter-spacing: 0.01em;
+  }
+
+  .field input::placeholder {
+    color: rgba(43, 30, 20, 0.3);
+    font-style: italic;
+  }
+
+  .field input:focus { border-bottom-color: var(--pink); }
+
+  .field input:-webkit-autofill,
+  .field input:-webkit-autofill:hover,
+  .field input:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--ink);
+    -webkit-box-shadow: 0 0 0 1000px var(--sand) inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  .gate-submit {
+    margin-top: 14px;
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    padding: 16px 28px;
+    cursor: pointer;
+    transition: color 0.3s ease, border-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .gate-submit::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--rainbow);
+    transform: translateX(-101%);
+    transition: transform 0.45s cubic-bezier(.2,.8,.2,1);
+    z-index: -1;
+  }
+
+  .gate-submit:hover { color: var(--paper); border-color: transparent; }
+  .gate-submit:hover::before { transform: translateX(0); }
+  .gate-submit:disabled { opacity: 0.45; cursor: wait; }
+
+  .gate-error {
+    min-height: 20px;
+    margin-top: 14px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--pink-deep);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    text-align: center;
+  }
+
+  .gate-error.visible { opacity: 1; }
+
+  .gate-footer {
+    position: absolute;
+    bottom: 28px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: var(--sans);
+    font-size: 9px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    opacity: 0.7;
+  }
+
+  /* ===================== DECK ===================== */
+  .deck {
+    display: none;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+  }
+
+  .deck.visible { display: block; }
+  body.deck-mode { overflow: hidden; height: 100vh; }
+
+  .chrome {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: 24px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 50;
+    pointer-events: none;
+  }
+
+  .chrome-mark,
+  .chrome-counter {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .chrome-counter { color: var(--pink-deep); }
+
+  .progress {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--hair-soft);
+    z-index: 50;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background: var(--rainbow);
+    width: 0%;
+    transition: width 0.6s cubic-bezier(.2,.8,.2,1);
+  }
+
+  .nav {
+    position: fixed;
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    z-index: 50;
+  }
+
+  .nav-btn {
+    background: var(--paper);
+    border: 1px solid var(--hair);
+    color: var(--ink);
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  .nav-btn:hover:not(:disabled) {
+    border-color: var(--pink);
+    color: var(--pink-deep);
+    transform: translateY(-1px);
+  }
+
+  .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  /* ===================== SLIDES ===================== */
+  .slide {
+    min-height: 100vh;
+    height: 100vh;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 88px 48px 92px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slide.active {
+    display: flex;
+    animation: slideIn 0.85s cubic-bezier(.2,.8,.2,1);
+  }
+
+  @keyframes slideIn {
+    0%   { opacity: 0; transform: translateY(14px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes softFade {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ----- Slide 1: Overview ----- */
+  .slide-overview {
+    max-width: 1160px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.05fr 1.35fr;
+    gap: 72px;
+    align-items: center;
+  }
+
+  .ov-left { position: relative; }
+
+  .ov-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: softFade 0.9s 0.2s forwards;
+  }
+
+  .ov-eyebrow .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--rainbow);
+  }
+
+  .ov-title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(48px, 6.6vw, 92px);
+    line-height: 0.96;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: softFade 1.1s 0.4s forwards;
+  }
+
+  .ov-title em {
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .ov-title .gummy {
+    display: inline-block;
+    background: var(--rainbow);
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+            color: transparent;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .ov-kicker {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(18px, 1.95vw, 22px);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 460px;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: softFade 1s 0.65s forwards;
+  }
+
+  .ov-meta {
+    display: flex;
+    gap: 36px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding-top: 26px;
+    border-top: 1px solid var(--hair);
+    opacity: 0;
+    animation: softFade 1s 0.9s forwards;
+  }
+
+  .ov-meta .cell {
+    min-width: 120px;
+  }
+
+  .ov-meta .cell .label {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: var(--pink-deep);
+    margin-bottom: 8px;
+  }
+
+  .ov-meta .cell .val {
+    font-family: var(--serif);
+    font-size: clamp(16px, 1.6vw, 19px);
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+    line-height: 1.3;
+  }
+
+  .ov-meta .cell .val em {
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  /* ----- Right column: the itinerary ----- */
+  .ov-right {
+    position: relative;
+    opacity: 0;
+    animation: softFade 1.1s 0.55s forwards;
+  }
+
+  .ov-right-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 22px;
+  }
+
+  .ov-right-header .label {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .ov-right-header .pill {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink);
+    padding: 6px 14px;
+    border: 1px solid var(--hair);
+    border-radius: 999px;
+    background: var(--paper);
+  }
+
+  .agenda {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid var(--hair);
+  }
+
+  .agenda li {
+    display: grid;
+    grid-template-columns: 40px 1fr auto;
+    align-items: baseline;
+    gap: 22px;
+    padding: 22px 0 22px;
+    border-bottom: 1px solid var(--hair);
+    position: relative;
+    transition: transform 0.35s ease;
+  }
+
+  .agenda li:hover { transform: translateX(4px); }
+
+  .agenda li::before {
+    content: '';
+    position: absolute;
+    left: -24px; top: 0; bottom: 0;
+    width: 2px;
+    background: transparent;
+    transition: background 0.35s ease;
+  }
+
+  .agenda li:hover::before { background: var(--rainbow); }
+
+  .agenda .num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 20px;
+    color: var(--pink-deep);
+    letter-spacing: -0.02em;
+  }
+
+  .agenda .copy {
+    min-width: 0;
+  }
+
+  .agenda .title {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(18px, 1.85vw, 22px);
+    line-height: 1.25;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+    margin-bottom: 4px;
+  }
+
+  .agenda .title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ink-soft);
+  }
+
+  .agenda .sub {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+
+  .agenda .tag {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    white-space: nowrap;
+    padding-top: 4px;
+  }
+
+  /* Floating pouch decoration on the left column */
+  .ov-pouch {
+    position: absolute;
+    bottom: -120px;
+    left: -80px;
+    width: 320px;
+    height: 320px;
+    opacity: 0.12;
+    pointer-events: none;
+    transform: rotate(-10deg);
+    z-index: -1;
+  }
+
+  /* Corner rainbow hairline on the slide */
+  .slide-overview::before {
+    content: '';
+    position: absolute;
+    top: 48px; left: 48px;
+    width: 48px; height: 1px;
+    background: var(--rainbow);
+  }
+  .slide-overview::after {
+    content: '';
+    position: absolute;
+    bottom: 72px; right: 48px;
+    width: 48px; height: 1px;
+    background: var(--rainbow);
+  }
+
+  /* ===================== Responsive ===================== */
+  @media (max-width: 900px) {
+    .slide { padding: 96px 28px 96px; height: auto; min-height: 100vh; }
+    .slide-overview {
+      grid-template-columns: 1fr;
+      gap: 44px;
+    }
+    .ov-pouch { display: none; }
+    .ov-meta { gap: 24px; }
+    .ov-meta .cell { min-width: 100px; }
+    .agenda li {
+      grid-template-columns: 32px 1fr;
+      gap: 16px;
+    }
+    .agenda .tag {
+      grid-column: 2;
+      padding-top: 0;
+    }
+    .slide-overview::before { top: 32px; left: 28px; }
+    .slide-overview::after  { bottom: 56px; right: 28px; }
+    .chrome { padding: 20px 24px; }
+  }
+
+  @media (max-width: 560px) {
+    .gate { padding: 64px 22px 84px; }
+    .gate-pouch { width: 100px; height: 100px; margin-bottom: 20px; }
+    .gate-title { font-size: 40px; }
+    .gate-sub { font-size: 16px; margin-bottom: 32px; }
+    .ov-title { font-size: 48px; }
+    .ov-kicker { font-size: 17px; }
+    .nav { bottom: 16px; }
+    .chrome-mark, .chrome-counter { font-size: 9px; letter-spacing: 0.32em; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ GATE ============ -->
+<div class="gate" id="gate">
+  <div class="gate-mark">Shed &nbsp;·&nbsp; Private</div>
+
+  <div class="gate-card">
+    <div class="eyebrow gate-eyebrow">By Invitation</div>
+    <h1 class="gate-title">Very <em>Strong</em><br/><span class="rainbow-text">Gummy</span> Ventures</h1>
+    <div class="gate-sub">Because business should be as fun as a gummy in Sirolo.</div>
+
+    <form class="gate-form" id="gate-form" autocomplete="off">
+      <div class="field">
+        <label for="gate-pass">First name of the most attractive man in TRIUM 2024</label>
+        <input
+          type="password"
+          id="gate-pass"
+          name="password"
+          placeholder="one word, case doesn't matter"
+          autocomplete="current-password"
+          spellcheck="false"
+          required
+        />
+      </div>
+      <button type="submit" class="gate-submit" id="gate-submit">Enter</button>
+      <div class="gate-error" id="gate-error">&nbsp;</div>
+    </form>
+  </div>
+
+  <div class="gate-footer">Shed Capital Inc.</div>
+</div>
+
+<!-- ============ DECK ============ -->
+<main class="deck" id="deck" aria-hidden="true">
+  <header class="chrome">
+    <div class="chrome-mark">VSGV &nbsp;·&nbsp; Jill + Luke</div>
+    <div class="chrome-counter" id="counter">01 / 01</div>
+  </header>
+
+  <!-- ---- Slide 1: Overview ---- -->
+  <section class="slide slide-overview active" data-slide="overview">
+    <div class="ov-left">
+      <div class="ov-eyebrow">
+        <span class="dot"></span>
+        <span class="eyebrow">The Proposed Collaboration</span>
+      </div>
+
+      <h1 class="ov-title">
+        Very <em>Strong</em><br/>
+        <span class="gummy">Gummy</span> Ventures.
+      </h1>
+
+      <p class="ov-kicker">
+        A premium consumer-products house built by two friends &mdash; starting
+        with the category American women have quietly been waiting for.
+      </p>
+
+      <div class="ov-meta">
+        <div class="cell">
+          <div class="label">Operator</div>
+          <div class="val">Jillian Muller<br/><em>CEO, co-founder</em></div>
+        </div>
+        <div class="cell">
+          <div class="label">Partner</div>
+          <div class="val">Luke Vigeant<br/><em>Co-founder, ops</em></div>
+        </div>
+        <div class="cell">
+          <div class="label">Today</div>
+          <div class="val">April 17, 2026<br/><em>Re-engagement</em></div>
+        </div>
+      </div>
+
+      <!-- decorative background mark -->
+      <svg class="ov-pouch" viewBox="0 0 200 200" aria-hidden="true">
+        <path d="M30 46 Q30 36 42 34 L158 34 Q170 36 170 46 L170 168 Q170 178 158 178 L42 178 Q30 178 30 168 Z"
+              fill="none" stroke="url(#pouchEdge2)" stroke-width="5" stroke-linejoin="round"/>
+        <defs>
+          <linearGradient id="pouchEdge2" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%"  stop-color="#F12C8E"/>
+            <stop offset="30%" stop-color="#6B3FA0"/>
+            <stop offset="55%" stop-color="#3AB8F2"/>
+            <stop offset="78%" stop-color="#2FD0C5"/>
+            <stop offset="100%" stop-color="#F8E532"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <aside class="ov-right">
+      <div class="ov-right-header">
+        <div class="label">What Follows</div>
+        <div class="pill">A six-part tour</div>
+      </div>
+
+      <ol class="agenda">
+        <li>
+          <span class="num">i.</span>
+          <div class="copy">
+            <div class="title">The <em>thesis</em> &mdash; why we're building this now.</div>
+            <div class="sub">Warmth, reframed for the woman who already owns the closet.</div>
+          </div>
+          <span class="tag">Why</span>
+        </li>
+        <li>
+          <span class="num">ii.</span>
+          <div class="copy">
+            <div class="title">First product &mdash; <em>Hot Girls.</em></div>
+            <div class="sub">Premium Kairo, designed in California, made in Japan.</div>
+          </div>
+          <span class="tag">Product</span>
+        </li>
+        <li>
+          <span class="num">iii.</span>
+          <div class="copy">
+            <div class="title">Manufacturing &mdash; seven doors, <em>one opening.</em></div>
+            <div class="sub">S.T. Corporation re-engaged. Ferric, Iwaki, Oishikoseido in flight.</div>
+          </div>
+          <span class="tag">Supply</span>
+        </li>
+        <li>
+          <span class="num">iv.</span>
+          <div class="copy">
+            <div class="title">The partnership &mdash; <em>how we work.</em></div>
+            <div class="sub">Founder's agreement, equity, cadence, use of proceeds.</div>
+          </div>
+          <span class="tag">Deal</span>
+        </li>
+        <li>
+          <span class="num">v.</span>
+          <div class="copy">
+            <div class="title">Capital &amp; model &mdash; <em>what $100k unlocks.</em></div>
+            <div class="sub">From seed cheque to first production run, line by line.</div>
+          </div>
+          <span class="tag">Money</span>
+        </li>
+        <li>
+          <span class="num">vi.</span>
+          <div class="copy">
+            <div class="title">Next ten days &mdash; <em>and the ten after.</em></div>
+            <div class="sub">A decision, a meeting in person, and a clear runway.</div>
+          </div>
+          <span class="tag">Plan</span>
+        </li>
+      </ol>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="Slide navigation">
+    <button class="nav-btn" id="prev" aria-label="Previous slide" disabled>&lsaquo;</button>
+    <button class="nav-btn" id="next" aria-label="Next slide" disabled>&rsaquo;</button>
+  </nav>
+
+  <div class="progress"><div class="progress-bar" id="progress-bar"></div></div>
+</main>
+
+<script>
+  // ───────────────────────────────────────────
+  // Config
+  // ───────────────────────────────────────────
+  // SHA-256 of 'santiago' (case-insensitive).
+  const PASS_HASH = '49faaade493be8b6b6164ee67f7e4d101812a5dda970d6ca693dda8b8cf82e4b';
+  const SESSION_KEY = 'vsgv_shed_session_v1';
+
+  // ───────────────────────────────────────────
+  // SHA-256 — uses WebCrypto where available,
+  // falls back to a pure-JS implementation.
+  // ───────────────────────────────────────────
+  async function sha256(text) {
+    if (window.crypto && window.crypto.subtle) {
+      const buf = new TextEncoder().encode(text);
+      const hash = await window.crypto.subtle.digest('SHA-256', buf);
+      return Array.from(new Uint8Array(hash))
+        .map(b => b.toString(16).padStart(2, '0'))
+        .join('');
+    }
+    return sha256Fallback(text);
+  }
+
+  function sha256Fallback(ascii) {
+    function rightRotate(n, x) { return (x >>> n) | (x << (32 - n)); }
+    const K = new Uint32Array([
+      0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,
+      0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,
+      0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,
+      0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,
+      0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,
+      0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,
+      0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,
+      0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2
+    ]);
+    const H = new Uint32Array([
+      0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,
+      0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19
+    ]);
+    const bytes = [];
+    for (let i = 0; i < ascii.length; i++) {
+      const c = ascii.charCodeAt(i);
+      if (c < 0x80) bytes.push(c);
+      else if (c < 0x800) bytes.push(0xc0 | (c >> 6), 0x80 | (c & 0x3f));
+      else bytes.push(0xe0 | (c >> 12), 0x80 | ((c >> 6) & 0x3f), 0x80 | (c & 0x3f));
+    }
+    const bitLen = bytes.length * 8;
+    bytes.push(0x80);
+    while (bytes.length % 64 !== 56) bytes.push(0);
+    for (let i = 7; i >= 0; i--) bytes.push((bitLen >>> (i * 8)) & 0xff);
+    const W = new Uint32Array(64);
+    for (let chunk = 0; chunk < bytes.length; chunk += 64) {
+      for (let i = 0; i < 16; i++) {
+        W[i] = (bytes[chunk + i * 4] << 24) |
+               (bytes[chunk + i * 4 + 1] << 16) |
+               (bytes[chunk + i * 4 + 2] << 8) |
+               (bytes[chunk + i * 4 + 3]);
+      }
+      for (let i = 16; i < 64; i++) {
+        const s0 = rightRotate(7, W[i-15]) ^ rightRotate(18, W[i-15]) ^ (W[i-15] >>> 3);
+        const s1 = rightRotate(17, W[i-2]) ^ rightRotate(19, W[i-2]) ^ (W[i-2] >>> 10);
+        W[i] = (W[i-16] + s0 + W[i-7] + s1) | 0;
+      }
+      let a=H[0],b=H[1],c=H[2],d=H[3],e=H[4],f=H[5],g=H[6],h=H[7];
+      for (let i = 0; i < 64; i++) {
+        const S1 = rightRotate(6, e) ^ rightRotate(11, e) ^ rightRotate(25, e);
+        const ch = (e & f) ^ (~e & g);
+        const t1 = (h + S1 + ch + K[i] + W[i]) | 0;
+        const S0 = rightRotate(2, a) ^ rightRotate(13, a) ^ rightRotate(22, a);
+        const mj = (a & b) ^ (a & c) ^ (b & c);
+        const t2 = (S0 + mj) | 0;
+        h = g; g = f; f = e; e = (d + t1) | 0;
+        d = c; c = b; b = a; a = (t1 + t2) | 0;
+      }
+      H[0]=(H[0]+a)|0;H[1]=(H[1]+b)|0;H[2]=(H[2]+c)|0;H[3]=(H[3]+d)|0;
+      H[4]=(H[4]+e)|0;H[5]=(H[5]+f)|0;H[6]=(H[6]+g)|0;H[7]=(H[7]+h)|0;
+    }
+    return Array.from(H).map(x => ('00000000' + (x >>> 0).toString(16)).slice(-8)).join('');
+  }
+
+  // ───────────────────────────────────────────
+  // Gate
+  // ───────────────────────────────────────────
+  const gateEl = document.getElementById('gate');
+  const deckEl = document.getElementById('deck');
+  const form = document.getElementById('gate-form');
+  const passInput = document.getElementById('gate-pass');
+  const submitBtn = document.getElementById('gate-submit');
+  const errEl = document.getElementById('gate-error');
+
+  function showDeck() {
+    gateEl.classList.add('hidden');
+    deckEl.classList.add('visible');
+    document.body.classList.add('deck-mode');
+    deckEl.setAttribute('aria-hidden', 'false');
+    document.title = 'VSGV — Jill + Luke';
+    window.scrollTo(0, 0);
+    render();
+  }
+
+  function setError(msg) {
+    errEl.textContent = msg || '\u00A0';
+    errEl.classList.toggle('visible', !!msg);
+  }
+
+  // Auto-unlock if the session was already verified
+  try {
+    if (sessionStorage.getItem(SESSION_KEY) === 'ok' ||
+        localStorage.getItem(SESSION_KEY) === 'ok') {
+      showDeck();
+    }
+  } catch (_) { /* storage blocked */ }
+
+  // Print mode bypass (?pdf=1) for headless PDF export
+  const isPrintMode = new URLSearchParams(window.location.search).get('pdf') === '1';
+  if (isPrintMode) {
+    gateEl.classList.add('hidden');
+    deckEl.classList.add('visible');
+    document.body.classList.remove('deck-mode');
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    setError('');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Verifying…';
+
+    const pass = passInput.value.trim().toLowerCase();
+    await new Promise(r => setTimeout(r, 380));
+
+    try {
+      const hash = await sha256(pass);
+      if (hash === PASS_HASH) {
+        try {
+          localStorage.setItem(SESSION_KEY, 'ok');
+          sessionStorage.setItem(SESSION_KEY, 'ok');
+        } catch (_) {}
+        submitBtn.textContent = 'Welcome';
+        setTimeout(showDeck, 320);
+      } else {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enter';
+        setError('That isn\u2019t the word.');
+        passInput.value = '';
+        passInput.focus();
+      }
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Enter';
+      setError('Something went wrong. Please try again.');
+    }
+  });
+
+  // ───────────────────────────────────────────
+  // Deck navigation (single slide today; built
+  // for more tomorrow)
+  // ───────────────────────────────────────────
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const counter = document.getElementById('counter');
+  const progressBar = document.getElementById('progress-bar');
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
+  let current = 0;
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function render() {
+    slides.forEach((s, i) => s.classList.toggle('active', i === current));
+    counter.textContent = `${pad(current + 1)} / ${pad(slides.length)}`;
+    const pct = slides.length <= 1 ? 100 : (current / (slides.length - 1)) * 100;
+    progressBar.style.width = pct + '%';
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === slides.length - 1;
+  }
+
+  function go(delta) {
+    const next = Math.min(slides.length - 1, Math.max(0, current + delta));
+    if (next === current) return;
+    current = next;
+    render();
+  }
+
+  prevBtn.addEventListener('click', () => go(-1));
+  nextBtn.addEventListener('click', () => go(1));
+
+  document.addEventListener('keydown', (e) => {
+    if (gateEl && !gateEl.classList.contains('hidden')) return;
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); go(1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp')                { e.preventDefault(); go(-1); }
+    else if (e.key === 'Home')                                           { e.preventDefault(); current = 0; render(); }
+    else if (e.key === 'End')                                            { e.preventDefault(); current = slides.length - 1; render(); }
+  });
+</script>
+
+</body>
+</html>
