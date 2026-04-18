@@ -420,11 +420,12 @@
   .slide-overview {
     max-width: 1160px;
     width: 100%;
-    display: grid;
     grid-template-columns: 1.05fr 1.35fr;
     gap: 72px;
     align-items: center;
   }
+
+  .slide-overview.active { display: grid; }
 
   .ov-left { position: relative; }
 
@@ -665,6 +666,1665 @@
     background: var(--rainbow);
   }
 
+  /* ----- Slide 2: The Thesis ----- */
+  .slide-thesis {
+    align-items: flex-start;
+    padding-top: 128px;
+  }
+
+  .thesis-wrap {
+    max-width: 1100px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  .thesis-chapter {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    opacity: 0;
+    animation: softFade 0.9s 0.2s forwards;
+  }
+
+  .thesis-chapter .num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 26px;
+    color: var(--pink-deep);
+    letter-spacing: -0.02em;
+  }
+
+  .thesis-chapter .label {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .thesis-chapter::after {
+    content: '';
+    flex: 0 1 200px;
+    height: 1px;
+    background: var(--rainbow);
+    opacity: 0.7;
+  }
+
+  .thesis-headline {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(44px, 6vw, 82px);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 0;
+    opacity: 0;
+    animation: softFade 1.1s 0.4s forwards;
+  }
+
+  .thesis-headline em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--pink-deep);
+  }
+
+  .thesis-headline .gummy {
+    display: inline-block;
+    background: var(--rainbow);
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+            color: transparent;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .thesis-body {
+    max-width: 780px;
+    font-family: var(--serif);
+    font-size: clamp(17px, 1.65vw, 20px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    opacity: 0;
+    animation: softFade 1s 0.65s forwards;
+  }
+
+  .thesis-body p + p { margin-top: 14px; }
+
+  .thesis-body em {
+    font-style: italic;
+    color: var(--pink-deep);
+    font-weight: 500;
+  }
+
+  .thesis-body strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .thesis-tenets {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    padding-top: 28px;
+    border-top: 1px solid var(--hair);
+    opacity: 0;
+    animation: softFade 1s 0.9s forwards;
+  }
+
+  .tenet .tenet-num {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.42em;
+    color: var(--pink-deep);
+    margin-bottom: 10px;
+  }
+
+  .tenet .tenet-title {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(18px, 1.9vw, 22px);
+    color: var(--ink);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .tenet .tenet-sub {
+    font-family: var(--serif);
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.45;
+    font-style: italic;
+  }
+
+  .slide-thesis::before {
+    content: '';
+    position: absolute;
+    top: 48px; right: 48px;
+    width: 48px; height: 1px;
+    background: var(--rainbow);
+  }
+
+  .slide-thesis::after {
+    content: '';
+    position: absolute;
+    bottom: 72px; left: 48px;
+    width: 48px; height: 1px;
+    background: var(--rainbow);
+  }
+
+  /* ----- Slide 3: Proposed Model ----- */
+  .slide-model {
+    align-items: flex-start;
+    padding-top: 108px;
+  }
+
+  .model-wrap {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+  }
+
+  .model-head {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 56px;
+    align-items: end;
+    opacity: 0;
+    animation: softFade 1s 0.3s forwards;
+  }
+
+  .model-headline {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(34px, 4.4vw, 58px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .model-headline em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--pink-deep);
+  }
+
+  .model-headline .gummy {
+    display: inline-block;
+    background: var(--rainbow);
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+            color: transparent;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .model-sub {
+    font-family: var(--serif);
+    font-size: clamp(14px, 1.3vw, 16px);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin: 0;
+  }
+
+  .model-sub strong {
+    color: var(--ink);
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  /* The 4-step money-flow */
+  .model-flow {
+    display: grid;
+    grid-template-columns: 1fr 16px 1fr 16px 1fr 16px 1fr;
+    gap: 0;
+    align-items: stretch;
+    padding: 22px 0;
+    border-top: 1px solid var(--hair);
+    border-bottom: 1px solid var(--hair);
+    opacity: 0;
+    animation: softFade 1s 0.5s forwards;
+  }
+
+  .flow-step { padding: 4px 18px; }
+  .flow-step:first-child { padding-left: 0; }
+  .flow-step:last-child { padding-right: 0; }
+
+  .step-num {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.42em;
+    color: var(--pink-deep);
+    margin-bottom: 8px;
+  }
+
+  .step-title {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(15px, 1.5vw, 18px);
+    color: var(--ink);
+    margin-bottom: 6px;
+    letter-spacing: -0.005em;
+    line-height: 1.2;
+  }
+
+  .step-detail {
+    font-family: var(--serif);
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  .step-detail em {
+    font-style: italic;
+    color: var(--pink-deep);
+    font-weight: 500;
+  }
+
+  .flow-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--pink-deep);
+    opacity: 0.55;
+  }
+
+  /* Cap table + downside */
+  .model-cap {
+    display: grid;
+    grid-template-columns: 1.55fr 1fr;
+    gap: 36px;
+    align-items: start;
+    opacity: 0;
+    animation: softFade 1s 0.7s forwards;
+  }
+
+  .cap-label {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+
+  .cap-label em {
+    font-style: italic;
+    color: var(--pink-deep);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: none;
+  }
+
+  .cap-bar {
+    display: flex;
+    width: 100%;
+    height: 44px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 14px;
+    box-shadow: inset 0 0 0 1px rgba(43,30,20,0.08);
+  }
+
+  .cap-seg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--paper);
+    padding: 0 8px;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .cap-seg.cap-vsgv { background: var(--ink); }
+  .cap-seg.cap-esop { background: var(--pink-deep); }
+  .cap-seg.cap-jill { background: var(--teal-deep); }
+
+  .cap-seg .pct {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 0;
+    text-transform: none;
+    font-weight: 400;
+  }
+
+  .cap-lines {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 14px;
+  }
+
+  .cap-lines li {
+    font-family: var(--serif);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    padding: 4px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .cap-lines strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .cap-lines em {
+    font-style: italic;
+    color: var(--pink-deep);
+    font-weight: 500;
+  }
+
+  .cap-lines .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+
+  .cap-lines .dot.vsgv { background: var(--ink); }
+  .cap-lines .dot.esop { background: var(--pink-deep); }
+  .cap-lines .dot.jill { background: var(--teal-deep); }
+
+  .effective-note {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--ink-soft);
+    padding: 10px 14px;
+    border-left: 1px solid var(--hair-soft);
+    background: rgba(255, 251, 242, 0.35);
+  }
+
+  .effective-note strong {
+    font-style: normal;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .downside {
+    font-family: var(--serif);
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    padding: 18px 20px;
+    border: 1px solid var(--hair);
+    border-left: 2px solid var(--pink-deep);
+    background: rgba(255, 251, 242, 0.45);
+  }
+
+  .downside .title {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--pink-deep);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .downside em {
+    font-style: italic;
+    color: var(--pink-deep);
+    font-weight: 500;
+  }
+
+  .downside strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .slide-model::before {
+    content: '';
+    position: absolute;
+    top: 48px; left: 48px;
+    width: 48px; height: 1px;
+    background: var(--rainbow);
+  }
+
+  .slide-model::after {
+    content: '';
+    position: absolute;
+    bottom: 72px; right: 48px;
+    width: 48px; height: 1px;
+    background: var(--rainbow);
+  }
+
+  /* ----- Slide 4: The Partnership ----- */
+  .slide-partnership {
+    align-items: flex-start;
+    padding-top: 108px;
+  }
+
+  .partnership-wrap {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+  }
+
+  .partnership-head {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 56px;
+    align-items: end;
+    opacity: 0;
+    animation: softFade 1s 0.3s forwards;
+  }
+
+  .partnership-headline {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(34px, 4.4vw, 58px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .partnership-headline em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--pink-deep);
+  }
+
+  .partnership-headline .gummy {
+    display: inline-block;
+    background: var(--rainbow);
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+            color: transparent;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .partnership-sub {
+    font-family: var(--serif);
+    font-size: clamp(14px, 1.3vw, 16px);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin: 0;
+  }
+
+  .partnership-sub strong {
+    color: var(--ink);
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  .pacts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px 28px;
+    padding-top: 22px;
+    border-top: 1px solid var(--hair);
+    opacity: 0;
+    animation: softFade 1s 0.5s forwards;
+  }
+
+  .pact {
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    gap: 12px;
+    padding: 4px 0;
+    border-bottom: 1px solid var(--hair-soft);
+    align-items: baseline;
+  }
+
+  .pact-num {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.34em;
+    color: var(--pink-deep);
+    padding-top: 3px;
+  }
+
+  .pact-body { min-width: 0; }
+
+  .pact-title {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(15px, 1.45vw, 18px);
+    color: var(--ink);
+    line-height: 1.25;
+    letter-spacing: -0.005em;
+    margin-bottom: 3px;
+  }
+
+  .pact-title em {
+    color: var(--pink-deep);
+    font-weight: 500;
+  }
+
+  .pact-sub {
+    font-family: var(--serif);
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.45;
+  }
+
+  .partnership-cta {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 28px;
+    align-items: center;
+    padding: 18px 22px 18px 24px;
+    border: 1px solid var(--hair);
+    border-left: 2px solid var(--pink-deep);
+    background: rgba(255, 251, 242, 0.45);
+    opacity: 0;
+    animation: softFade 1s 0.7s forwards;
+  }
+
+  .cta-copy .cta-label {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--pink-deep);
+    margin-bottom: 6px;
+  }
+
+  .cta-copy .cta-title {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(18px, 1.8vw, 22px);
+    color: var(--ink);
+    line-height: 1.3;
+    margin-bottom: 3px;
+  }
+
+  .cta-copy .cta-sub {
+    font-family: var(--serif);
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.45;
+    font-style: italic;
+  }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 20px 14px 22px;
+    background: var(--ink);
+    color: var(--paper);
+    text-decoration: none;
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    transition: all 0.3s cubic-bezier(.2,.8,.2,1);
+    border: 1px solid var(--ink);
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .cta-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--rainbow);
+    transform: translateX(-101%);
+    transition: transform 0.45s cubic-bezier(.2,.8,.2,1);
+    z-index: -1;
+  }
+
+  .cta-btn:hover { color: var(--paper); border-color: transparent; }
+  .cta-btn:hover::before { transform: translateX(0); }
+
+  .cta-btn-arrow {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-style: italic;
+    letter-spacing: 0;
+    text-transform: none;
+    font-weight: 400;
+  }
+
+  .partnership-footnote {
+    margin: 0;
+    padding: 0 4px;
+    font-family: var(--serif);
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    opacity: 0.85;
+    text-align: center;
+    font-style: italic;
+    opacity: 0;
+    animation: softFade 1s 0.85s forwards;
+  }
+
+  .partnership-footnote em {
+    color: var(--pink-deep);
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  .slide-partnership::before {
+    content: '';
+    position: absolute;
+    top: 48px; right: 48px;
+    width: 48px; height: 1px;
+    background: var(--rainbow);
+  }
+
+  .slide-partnership::after {
+    content: '';
+    position: absolute;
+    bottom: 72px; left: 48px;
+    width: 48px; height: 1px;
+    background: var(--rainbow);
+  }
+
+  /* ----- Slide 5: The VSGV Process ----- */
+  .slide-process {
+    align-items: flex-start;
+    padding-top: 104px;
+  }
+
+  .process-wrap {
+    max-width: 1240px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .process-head {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 56px;
+    align-items: end;
+    opacity: 0;
+    animation: softFade 1s 0.3s forwards;
+  }
+
+  .process-headline {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(32px, 4.2vw, 54px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .process-headline em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--pink-deep);
+  }
+
+  .process-headline .gummy {
+    display: inline-block;
+    background: var(--rainbow);
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+            color: transparent;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .process-sub {
+    font-family: var(--serif);
+    font-size: clamp(14px, 1.3vw, 16px);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin: 0;
+  }
+
+  /* 5-stage pipeline */
+  .pipeline {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr) ;
+    gap: 10px;
+    padding: 20px 0 22px;
+    border-top: 1px solid var(--hair);
+    border-bottom: 1px solid var(--hair);
+    opacity: 0;
+    animation: softFade 1s 0.5s forwards;
+    position: relative;
+  }
+
+  .stage {
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+    min-width: 0;
+    position: relative;
+  }
+
+  .stage + .stage::before {
+    content: '\2192';
+    position: absolute;
+    left: -10px;
+    top: 22px;
+    transform: translateX(-50%);
+    font-family: var(--serif);
+    font-size: 16px;
+    color: var(--pink-deep);
+    opacity: 0.55;
+  }
+
+  .stage-num {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.42em;
+    color: var(--pink-deep);
+    margin-bottom: 8px;
+  }
+
+  .stage-title {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(17px, 1.65vw, 21px);
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+
+  .stage-detail {
+    font-family: var(--serif);
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+    flex: 1;
+  }
+
+  .stage-detail em {
+    font-style: italic;
+    color: var(--pink-deep);
+    font-weight: 500;
+  }
+
+  .stage-cost {
+    display: inline-flex;
+    align-self: flex-start;
+    align-items: center;
+    padding: 6px 10px;
+    border: 1px solid var(--hair);
+    background: rgba(255, 251, 242, 0.5);
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .stage-cost em {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--pink-deep);
+    margin-right: 4px;
+  }
+
+  .stage-cost.cost-big em { color: var(--pink-deep); }
+  .stage-cost.cost-exit  { border-color: var(--pink-deep); }
+  .stage-cost.cost-exit em { color: var(--pink-deep); }
+
+  /* Optionality */
+  .optionality {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 36px;
+    align-items: start;
+    opacity: 0;
+    animation: softFade 1s 0.7s forwards;
+  }
+
+  .opt-left { }
+
+  .opt-eyebrow {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--pink-deep);
+    margin-bottom: 10px;
+  }
+
+  .opt-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(20px, 2.2vw, 26px);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+
+  .opt-title em {
+    font-style: italic;
+    color: var(--pink-deep);
+  }
+
+  .opt-copy {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  .opt-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid var(--hair-soft);
+  }
+
+  .opt-list li {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 14px;
+    align-items: baseline;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--hair-soft);
+  }
+
+  .opt-list .opt-name {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(16px, 1.5vw, 18px);
+    color: var(--ink);
+    letter-spacing: -0.005em;
+    line-height: 1.3;
+  }
+
+  .opt-list .opt-name em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ink-soft);
+  }
+
+  .opt-list .opt-sub {
+    font-family: var(--serif);
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+    font-style: italic;
+    margin-top: 2px;
+  }
+
+  .opt-list .opt-stage {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--pink-deep);
+    white-space: nowrap;
+  }
+
+  .slide-process::before {
+    content: '';
+    position: absolute;
+    top: 48px; left: 48px;
+    width: 48px; height: 1px;
+    background: var(--rainbow);
+  }
+
+  .slide-process::after {
+    content: '';
+    position: absolute;
+    bottom: 72px; right: 48px;
+    width: 48px; height: 1px;
+    background: var(--rainbow);
+  }
+
+  /* ----- Slide 6: Hot Girls (Project) ----- */
+  .slide-hotgirls {
+    align-items: flex-start;
+    padding-top: 108px;
+  }
+
+  .hg-wrap {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+  }
+
+  .hg-head {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 56px;
+    align-items: end;
+    opacity: 0;
+    animation: softFade 1s 0.3s forwards;
+  }
+
+  .hg-headline {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(48px, 6.6vw, 96px);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .hg-headline em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--pink-deep);
+  }
+
+  .hg-headline .gummy {
+    display: inline-block;
+    background: var(--rainbow);
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+            color: transparent;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .hg-pitch {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(16px, 1.55vw, 19px);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .hg-pitch strong {
+    color: var(--ink);
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  .hg-profiles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding-top: 22px;
+    border-top: 1px solid var(--hair);
+    opacity: 0;
+    animation: softFade 1s 0.55s forwards;
+  }
+
+  .profile {
+    display: flex;
+    flex-direction: column;
+    padding: 18px 20px;
+    border: 1px solid var(--hair);
+    background: rgba(255, 251, 242, 0.5);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .profile::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--rainbow);
+    opacity: 0.7;
+  }
+
+  .profile .p-eyebrow {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--pink-deep);
+    margin-bottom: 8px;
+  }
+
+  .profile .p-title {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(18px, 1.85vw, 22px);
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+
+  .profile .p-sub {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.45;
+    margin-bottom: 14px;
+    flex: 1;
+  }
+
+  .profile .p-specs {
+    display: flex;
+    gap: 14px;
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    border-top: 1px solid var(--hair-soft);
+    padding-top: 10px;
+  }
+
+  .profile .p-specs em {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--pink-deep);
+    margin-right: 3px;
+  }
+
+  .hg-footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    align-items: start;
+    padding-top: 18px;
+    border-top: 1px solid var(--hair);
+    opacity: 0;
+    animation: softFade 1s 0.75s forwards;
+  }
+
+  .positioning {
+    font-family: var(--serif);
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+
+  .positioning strong {
+    font-style: normal;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .positioning em {
+    color: var(--pink-deep);
+    font-weight: 500;
+  }
+
+  .whitespace {
+    padding: 14px 18px;
+    border-left: 2px solid var(--pink-deep);
+    border: 1px solid var(--hair);
+    border-left: 2px solid var(--pink-deep);
+    background: rgba(255, 251, 242, 0.5);
+  }
+
+  .whitespace .ws-label {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--pink-deep);
+    margin-bottom: 8px;
+  }
+
+  .whitespace .ws-copy {
+    font-family: var(--serif);
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  .whitespace .ws-copy em {
+    font-style: italic;
+    color: var(--pink-deep);
+    font-weight: 500;
+  }
+
+  .slide-hotgirls::before {
+    content: '';
+    position: absolute;
+    top: 48px; left: 48px;
+    width: 48px; height: 1px;
+    background: var(--rainbow);
+  }
+
+  .slide-hotgirls::after {
+    content: '';
+    position: absolute;
+    bottom: 72px; right: 48px;
+    width: 48px; height: 1px;
+    background: var(--rainbow);
+  }
+
+  /* ----- Slide 7: Hot Girls (Plan / Gantt) ----- */
+  .slide-hgplan {
+    align-items: flex-start;
+    padding-top: 108px;
+  }
+
+  .hgplan-wrap {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+  }
+
+  .hgplan-head {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 56px;
+    align-items: end;
+    opacity: 0;
+    animation: softFade 1s 0.3s forwards;
+  }
+
+  .hgplan-headline {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(32px, 4.2vw, 54px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .hgplan-headline em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--pink-deep);
+  }
+
+  .hgplan-headline .gummy {
+    display: inline-block;
+    background: var(--rainbow);
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+            color: transparent;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .hgplan-sub {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(14px, 1.3vw, 16px);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .hgplan-sub strong {
+    color: var(--ink);
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  /* ===== The Gantt ===== */
+  .gantt {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    column-gap: 14px;
+    opacity: 0;
+    animation: softFade 1s 0.5s forwards;
+  }
+
+  .gantt-corner {
+    padding: 10px 0;
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--hair);
+    display: flex;
+    align-items: center;
+  }
+
+  .gantt-months {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-bottom: 1px solid var(--hair);
+  }
+
+  .gantt-months span {
+    padding: 10px 8px;
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border-left: 1px solid var(--hair-soft);
+    text-align: center;
+  }
+
+  .gantt-months span:first-child { border-left: none; }
+
+  .gantt-label {
+    padding: 20px 0 20px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--hair-soft);
+  }
+
+  .gantt-track {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    position: relative;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--hair-soft);
+    background:
+      linear-gradient(to right,
+        transparent 0, transparent calc(25% - 0.5px),
+        var(--hair-soft) calc(25% - 0.5px), var(--hair-soft) calc(25% + 0.5px),
+        transparent calc(25% + 0.5px), transparent calc(50% - 0.5px),
+        var(--hair-soft) calc(50% - 0.5px), var(--hair-soft) calc(50% + 0.5px),
+        transparent calc(50% + 0.5px), transparent calc(75% - 0.5px),
+        var(--hair-soft) calc(75% - 0.5px), var(--hair-soft) calc(75% + 0.5px),
+        transparent calc(75% + 0.5px));
+  }
+
+  .gantt-bar {
+    grid-row: 1;
+    margin: 0 4px;
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--paper);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    box-shadow: 0 2px 6px rgba(43,30,20,0.12);
+    transform-origin: left center;
+    transform: scaleX(0.01);
+    opacity: 0;
+  }
+
+  .slide-hgplan.active .gantt-bar {
+    animation: ganttSlide 0.9s cubic-bezier(.2,.8,.2,1) forwards;
+  }
+
+  .slide-hgplan.active .gantt-bar:nth-of-type(1) { animation-delay: 0.55s; }
+  .slide-hgplan.active .gantt-bar:nth-of-type(2) { animation-delay: 0.7s; }
+  .slide-hgplan.active .gantt-bar:nth-of-type(3) { animation-delay: 0.85s; }
+  .slide-hgplan.active .gantt-bar:nth-of-type(4) { animation-delay: 1.0s; }
+
+  @keyframes ganttSlide {
+    0%   { transform: scaleX(0.01); opacity: 0; }
+    30%  { opacity: 1; }
+    100% { transform: scaleX(1); opacity: 1; }
+  }
+
+  .gantt-months em {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 11px;
+    color: var(--pink-deep);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .gantt-bar .bar-main { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  .gantt-bar .bar-sub {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0;
+    text-transform: none;
+    opacity: 0.92;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .bar-brand  { background: var(--pink-deep); }
+  .bar-mfg    { background: var(--ink); }
+  .bar-val    { background: var(--violet); color: var(--paper); }
+  .bar-launch { background: var(--rainbow); color: var(--ink); font-weight: 700; }
+
+  /* Manufacturing path — Travesia */
+  .travesia {
+    margin-top: 8px;
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    column-gap: 20px;
+    align-items: center;
+    padding: 18px 20px;
+    border: 1px solid var(--hair);
+    border-left: 2px solid var(--teal-deep);
+    background: rgba(255, 251, 242, 0.55);
+    opacity: 0;
+    animation: softFade 1s 0.75s forwards;
+  }
+
+  .travesia .tv-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .travesia .tv-label {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--teal-deep);
+  }
+
+  .travesia .tv-title {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .travesia .tv-sub {
+    font-family: var(--serif);
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-style: italic;
+    line-height: 1.4;
+  }
+
+  .tv-path {
+    display: grid;
+    grid-template-columns: 1fr 16px 1fr 16px 1fr 16px 1fr;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .tv-step {
+    padding: 4px 12px;
+    border-left: 1px solid var(--hair);
+  }
+
+  .tv-step:first-child { border-left: none; padding-left: 0; }
+  .tv-step:last-child  { padding-right: 0; }
+
+  .tv-step .tv-n {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.42em;
+    color: var(--teal-deep);
+    margin-bottom: 4px;
+  }
+
+  .tv-step .tv-name {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.25;
+    letter-spacing: -0.005em;
+  }
+
+  .tv-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--teal-deep);
+    font-family: var(--serif);
+    font-size: 14px;
+    opacity: 0.6;
+  }
+
+  .slide-hgplan::before {
+    content: '';
+    position: absolute;
+    top: 48px; right: 48px;
+    width: 48px; height: 1px;
+    background: var(--rainbow);
+  }
+
+  .slide-hgplan::after {
+    content: '';
+    position: absolute;
+    bottom: 72px; left: 48px;
+    width: 48px; height: 1px;
+    background: var(--rainbow);
+  }
+
+  /* ----- Slide 8: Next Steps ----- */
+  .slide-next {
+    align-items: flex-start;
+    padding-top: 108px;
+  }
+
+  .next-wrap {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .next-head {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 56px;
+    align-items: end;
+    opacity: 0;
+    animation: softFade 1s 0.3s forwards;
+  }
+
+  .next-headline {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(36px, 4.8vw, 66px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .next-headline em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--pink-deep);
+  }
+
+  .next-headline .gummy {
+    display: inline-block;
+    background: var(--rainbow);
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+            color: transparent;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .next-sub {
+    font-family: var(--serif);
+    font-size: clamp(14px, 1.3vw, 16px);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin: 0;
+  }
+
+  .next-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 48px;
+    align-items: start;
+    padding-top: 22px;
+    border-top: 1px solid var(--hair);
+    opacity: 0;
+    animation: softFade 1s 0.55s forwards;
+  }
+
+  .decision-list {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0;
+  }
+
+  .decision-list li {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 14px;
+    align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--hair-soft);
+  }
+
+  .decision-list li:last-child { border-bottom: none; }
+
+  .decision-num {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.34em;
+    color: var(--pink-deep);
+    padding-top: 4px;
+  }
+
+  .decision-title {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(17px, 1.7vw, 21px);
+    color: var(--ink);
+    line-height: 1.25;
+    letter-spacing: -0.005em;
+    margin-bottom: 4px;
+  }
+
+  .decision-title em {
+    font-style: italic;
+    color: var(--pink-deep);
+    font-weight: 500;
+  }
+
+  .decision-sub {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.45;
+  }
+
+  .funnel-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(18px, 1.95vw, 23px);
+    line-height: 1.28;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 4px 0 16px;
+  }
+
+  .funnel-title em {
+    font-style: italic;
+    color: var(--pink-deep);
+  }
+
+  .slide-next::before {
+    content: '';
+    position: absolute;
+    top: 48px; right: 48px;
+    width: 48px; height: 1px;
+    background: var(--rainbow);
+  }
+
+  .slide-next::after {
+    content: '';
+    position: absolute;
+    bottom: 72px; left: 48px;
+    width: 48px; height: 1px;
+    background: var(--rainbow);
+  }
+
+  /* Clickable agenda items */
+  .agenda li[data-goto-slide] {
+    cursor: pointer;
+  }
+
+  .agenda li[data-goto-slide]:hover .title,
+  .agenda li[data-goto-slide]:focus-visible .title {
+    color: var(--pink-deep);
+  }
+
+  .agenda li[data-goto-slide]:focus-visible {
+    outline: none;
+    background: rgba(255, 251, 242, 0.4);
+  }
+
+  .agenda li[data-goto-slide]:hover::before { background: var(--rainbow); }
+
   /* ===================== Responsive ===================== */
   @media (max-width: 900px) {
     .slide { padding: 96px 28px 96px; height: auto; min-height: 100vh; }
@@ -685,7 +2345,181 @@
     }
     .slide-overview::before { top: 32px; left: 28px; }
     .slide-overview::after  { bottom: 56px; right: 28px; }
+
+    .slide-thesis { padding-top: 112px; }
+    .thesis-wrap { gap: 28px; }
+    .thesis-tenets { grid-template-columns: 1fr; gap: 20px; padding-top: 20px; }
+    .slide-thesis::before { top: 32px; right: 28px; }
+    .slide-thesis::after  { bottom: 56px; left: 28px; }
+
+    .slide-model { padding-top: 104px; }
+    .model-wrap { gap: 20px; }
+    .model-head {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .model-flow {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      padding: 16px 0;
+    }
+    .flow-step { padding: 0; }
+    .flow-arrow { display: none; }
+    .model-cap { grid-template-columns: 1fr; gap: 24px; }
+    .slide-model::before { top: 32px; left: 28px; }
+    .slide-model::after  { bottom: 56px; right: 28px; }
+
+    .slide-partnership { padding-top: 104px; }
+    .partnership-wrap { gap: 20px; }
+    .partnership-head {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .pacts {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      padding-top: 16px;
+    }
+    .partnership-cta {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .slide-partnership::before { top: 32px; right: 28px; }
+    .slide-partnership::after  { bottom: 56px; left: 28px; }
+
+    .slide-process { padding-top: 104px; }
+    .process-wrap { gap: 20px; }
+    .process-head {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .pipeline {
+      grid-template-columns: 1fr;
+      gap: 0;
+      padding: 16px 0;
+    }
+    .stage {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--hair-soft);
+    }
+    .stage:last-child { border-bottom: none; }
+    .stage + .stage::before {
+      content: '\2193';
+      position: absolute;
+      left: 0;
+      top: -14px;
+      transform: none;
+    }
+    .slide-process::before { top: 32px; left: 28px; }
+    .slide-process::after  { bottom: 56px; right: 28px; }
+
+    .slide-next { padding-top: 104px; }
+    .next-wrap { gap: 22px; }
+    .next-head {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .next-grid {
+      grid-template-columns: 1fr;
+      gap: 28px;
+      padding-top: 18px;
+    }
+    .slide-next::before { top: 32px; right: 28px; }
+    .slide-next::after  { bottom: 56px; left: 28px; }
+
+    .slide-hotgirls { padding-top: 104px; }
+    .hg-wrap { gap: 20px; }
+    .hg-head {
+      grid-template-columns: 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+    .hg-profiles {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .hg-footer {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+    .slide-hotgirls::before { top: 32px; left: 28px; }
+    .slide-hotgirls::after  { bottom: 56px; right: 28px; }
+
+    .slide-hgplan { padding-top: 104px; }
+    .hgplan-wrap { gap: 20px; }
+    .hgplan-head {
+      grid-template-columns: 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+    .gantt {
+      grid-template-columns: 1fr;
+      row-gap: 2px;
+    }
+    .gantt-corner,
+    .gantt-label {
+      padding: 10px 0 2px;
+      font-size: 9px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      font-style: normal;
+      border: none;
+    }
+    .gantt-label {
+      font-family: var(--sans);
+      color: var(--pink-deep);
+      font-weight: 600;
+    }
+    .gantt-track {
+      padding: 6px 0 14px;
+    }
+    .gantt-bar {
+      font-size: 9px;
+      padding: 8px 10px;
+      margin: 0 2px;
+    }
+    .gantt-bar .bar-sub { display: none; }
+    .travesia {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .tv-path {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .tv-step {
+      border-left: 1px solid var(--hair);
+      padding: 8px 12px;
+    }
+    .tv-step:first-child { border-left: 1px solid var(--hair); padding-left: 12px; }
+    .tv-arrow { display: none; }
+    .slide-hgplan::before { top: 32px; right: 28px; }
+    .slide-hgplan::after  { bottom: 56px; left: 28px; }
+
     .chrome { padding: 20px 24px; }
+
+    /* Mobile: let the page scroll naturally */
+    body.deck-mode {
+      overflow-y: auto;
+      height: auto;
+    }
+    .deck.visible {
+      min-height: 100vh;
+      height: auto;
+    }
+    .slide { overflow: visible; }
+    .nav {
+      background: var(--paper);
+      padding: 8px 16px;
+      border: 1px solid var(--hair);
+      border-radius: 999px;
+      box-shadow: 0 6px 20px rgba(43,30,20,0.08);
+    }
+    .progress { position: sticky; }
   }
 
   @media (max-width: 560px) {
@@ -788,11 +2622,11 @@
     <aside class="ov-right">
       <div class="ov-right-header">
         <div class="label">What Follows</div>
-        <div class="pill">A seven-part tour</div>
+        <div class="pill">A six-part tour</div>
       </div>
 
       <ol class="agenda">
-        <li>
+        <li data-goto-slide="thesis">
           <span class="num">i.</span>
           <div class="copy">
             <div class="title">The <em>thesis</em>.</div>
@@ -800,7 +2634,7 @@
           </div>
           <span class="tag">Why</span>
         </li>
-        <li>
+        <li data-goto-slide="model">
           <span class="num">ii.</span>
           <div class="copy">
             <div class="title">Proposed <em>model</em>.</div>
@@ -808,7 +2642,7 @@
           </div>
           <span class="tag">How</span>
         </li>
-        <li>
+        <li data-goto-slide="partnership">
           <span class="num">iii.</span>
           <div class="copy">
             <div class="title">The <em>partnership</em>.</div>
@@ -816,40 +2650,533 @@
           </div>
           <span class="tag">Deal</span>
         </li>
-        <li>
+        <li data-goto-slide="process">
           <span class="num">iv.</span>
+          <div class="copy">
+            <div class="title">The VSGV <em>process</em>.</div>
+            <div class="sub">Ideation &rarr; validation &rarr; incubation &rarr; scale &rarr; sell.</div>
+          </div>
+          <span class="tag">Process</span>
+        </li>
+        <li data-goto-slide="hotgirls">
+          <span class="num">v.</span>
           <div class="copy">
             <div class="title">First product &mdash; <em>Hot Girls.</em></div>
             <div class="sub">Premium Kairo, designed in California, made in Japan.</div>
           </div>
           <span class="tag">Product</span>
         </li>
-        <li>
-          <span class="num">v.</span>
-          <div class="copy">
-            <div class="title">Capital flow &mdash; <em>VSGV &rarr; Hot Girls.</em></div>
-            <div class="sub">How the cheque gets in, and what comes back.</div>
-          </div>
-          <span class="tag">Capital</span>
-        </li>
-        <li>
+        <li data-goto-slide="next">
           <span class="num">vi.</span>
           <div class="copy">
-            <div class="title">Potential <em>follow-ups</em>.</div>
-            <div class="sub">EMS Studio &mdash; a Hawaii expansion waiting in the wings.</div>
-          </div>
-          <span class="tag">Pipeline</span>
-        </li>
-        <li>
-          <span class="num">vii.</span>
-          <div class="copy">
             <div class="title">Next <em>steps</em>.</div>
-            <div class="sub">A decision, a meeting in person, and a clear runway.</div>
+            <div class="sub">A few decisions, a clear runway, and what's in the funnel next.</div>
           </div>
           <span class="tag">Plan</span>
         </li>
       </ol>
     </aside>
+  </section>
+
+  <!-- ---- Slide 2: The Thesis ---- -->
+  <section class="slide slide-thesis" data-slide="thesis">
+    <div class="thesis-wrap">
+      <div class="thesis-chapter">
+        <span class="num">i.</span>
+        <span class="label">The Thesis</span>
+      </div>
+
+      <h2 class="thesis-headline">
+        Risk the <em>minimum</em>.<br/>
+        Prove what's <em>real</em>.<br/>
+        Keep <span class="gummy">playing</span>.
+      </h2>
+
+      <div class="thesis-body">
+        <p>
+          Luke and Jillian both want to work on entrepreneurial ideas &mdash;
+          and both want to put the <em>minimum amount of capital at risk</em>
+          to prove whether any given venture is actually possible, and
+          actually works.
+        </p>
+        <p>
+          <strong>VSGV is the vehicle for that experimentation.</strong>
+          One structure that lets us keep working on new things on the back
+          of both successes <em>and</em> failures &mdash; instead of wiring
+          every idea to a brand-new company from scratch.
+        </p>
+      </div>
+
+      <div class="thesis-tenets">
+        <div class="tenet">
+          <div class="tenet-num">01</div>
+          <div class="tenet-title">Minimum stake.</div>
+          <div class="tenet-sub">Find out cheap, before it's expensive.</div>
+        </div>
+        <div class="tenet">
+          <div class="tenet-num">02</div>
+          <div class="tenet-title">One vehicle.</div>
+          <div class="tenet-sub">The deal stays. The bets change.</div>
+        </div>
+        <div class="tenet">
+          <div class="tenet-num">03</div>
+          <div class="tenet-title">Long game.</div>
+          <div class="tenet-sub">Both wins and losses buy the next at-bat.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---- Slide 3: Proposed Model ---- -->
+  <section class="slide slide-model" data-slide="model">
+    <div class="model-wrap">
+      <div class="thesis-chapter">
+        <span class="num">ii.</span>
+        <span class="label">Proposed Model</span>
+      </div>
+
+      <div class="model-head">
+        <h2 class="model-headline">
+          The <em>studio</em> model &mdash;<br/>
+          one <span class="gummy">vehicle</span>, many bets.
+        </h2>
+        <p class="model-sub">
+          Mirrors the shape Luke runs today at <strong>GreenShield Ventures</strong>,
+          and is building toward at <strong>Stripmall Ventures</strong>. Debt in,
+          equity out, the deal stays intact across wins and losses.
+        </p>
+      </div>
+
+      <div class="model-flow">
+        <div class="flow-step">
+          <div class="step-num">01</div>
+          <div class="step-title">Rich Partner lends.</div>
+          <div class="step-detail">Jill wires <em>$100k</em> to VSGV Corp. Sits on the balance sheet as debt &mdash; not equity.</div>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step">
+          <div class="step-num">02</div>
+          <div class="step-title">Market validation.</div>
+          <div class="step-detail">The capital funds research, prototypes, and supply outreach until we pick a winner.</div>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step">
+          <div class="step-num">03</div>
+          <div class="step-title">Sub-company incorporates.</div>
+          <div class="step-detail">A new entity (e.g. <em>Hot Girls, Inc.</em>) is formed. VSGV owns <em>100%</em> on day one.</div>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step">
+          <div class="step-num">04</div>
+          <div class="step-title">Debt converts at $1M.</div>
+          <div class="step-detail">Jill's $100k converts to shares in the sub at a <em>$1M</em> valuation &mdash; <em>10%</em> direct ownership.</div>
+        </div>
+      </div>
+
+      <div class="model-cap">
+        <div class="cap-left">
+          <div class="cap-label">Hot Girls, Inc. &mdash; <em>post-spin cap table</em></div>
+          <div class="cap-bar">
+            <div class="cap-seg cap-vsgv" style="flex: 60 0 0;">VSGV <span class="pct">60%</span></div>
+            <div class="cap-seg cap-esop" style="flex: 30 0 0;">ESOP <span class="pct">30%</span></div>
+            <div class="cap-seg cap-jill" style="flex: 10 0 0;">Jill <span class="pct">10%</span></div>
+          </div>
+          <ul class="cap-lines">
+            <li><span class="dot vsgv"></span><span><strong>VSGV</strong> holds 60% &mdash; the studio's stake in the venture. Luke and Jill each own half of VSGV.</span></li>
+            <li><span class="dot esop"></span><span><strong>ESOP</strong> reserves up to 30% &mdash; options for the operators who actually run Hot Girls.</span></li>
+            <li><span class="dot jill"></span><span><strong>Jill, direct</strong> gets 10% &mdash; <em>$100k &divide; $1M = 10%</em>.</span></li>
+          </ul>
+          <div class="effective-note">
+            <strong>Effective ownership:</strong> Jill <em>40%</em> (30% through VSGV + 10% direct) &nbsp;·&nbsp;
+            Luke <em>30%</em> (through VSGV) &nbsp;·&nbsp; ESOP <em>30%</em>.
+          </div>
+        </div>
+
+        <div class="cap-right">
+          <div class="downside">
+            <span class="title">If a venture fails</span>
+            Jill keeps the <em>full $100k</em> as debt on VSGV's balance sheet, serviced <strong>before</strong> any distributions from future ventures. The vehicle keeps playing; the capital stays protected.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---- Slide 4: The Partnership ---- -->
+  <section class="slide slide-partnership" data-slide="partnership">
+    <div class="partnership-wrap">
+      <div class="thesis-chapter">
+        <span class="num">iii.</span>
+        <span class="label">The Partnership</span>
+      </div>
+
+      <div class="partnership-head">
+        <h2 class="partnership-headline">
+          <em>Best</em>-efforts, by two<br/>
+          people looking to have fun,<br/>
+          who <span class="gummy">actually</span> like it.
+        </h2>
+        <p class="partnership-sub">
+          We're not quitting our jobs. We're making room, month by month,
+          for something we want to be doing with each other &mdash; <strong>regardless
+          of how any single bet turns out</strong>.
+        </p>
+      </div>
+
+      <div class="pacts">
+        <div class="pact">
+          <div class="pact-num">01</div>
+          <div class="pact-body">
+            <div class="pact-title">Best-efforts, non-full-time.</div>
+            <div class="pact-sub">Both Partners run VSGV on the side. No salaries, no quit dates, no pretending.</div>
+          </div>
+        </div>
+        <div class="pact">
+          <div class="pact-num">02</div>
+          <div class="pact-body">
+            <div class="pact-title">Either Partner can lend.</div>
+            <div class="pact-sub">Or convert expenses to debt. In practice, mostly Jill &mdash; she's the Rich Partner.</div>
+          </div>
+        </div>
+        <div class="pact">
+          <div class="pact-num">03</div>
+          <div class="pact-body">
+            <div class="pact-title">One call a month.</div>
+            <div class="pact-sub">A standing thirty minutes to decide, trade updates, and pick what's next. Async between calls.</div>
+          </div>
+        </div>
+        <div class="pact">
+          <div class="pact-num">04</div>
+          <div class="pact-body">
+            <div class="pact-title">It has to be <em>fun</em>.</div>
+            <div class="pact-sub">If it stops being fun for either of us, we renegotiate. Outranks every other rule.</div>
+          </div>
+        </div>
+        <div class="pact">
+          <div class="pact-num">05</div>
+          <div class="pact-body">
+            <div class="pact-title">Don't get Luke fired.</div>
+            <div class="pact-sub">VSGV stays discreet with outside parties until we agree otherwise.</div>
+          </div>
+        </div>
+        <div class="pact">
+          <div class="pact-num">06</div>
+          <div class="pact-body">
+            <div class="pact-title">If either wants to operate.</div>
+            <div class="pact-sub">Running one of the ventures is open. We'd negotiate the terms when the moment arrives.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="partnership-cta">
+        <div class="cta-copy">
+          <div class="cta-label">Founders' Agreement</div>
+          <div class="cta-title">The draft &mdash; long form.</div>
+          <div class="cta-sub">A plain-English document that codifies everything in this deck. Read it, mark it up, send it back.</div>
+        </div>
+        <a class="cta-btn" href="VSGV_Founders_Agreement.docx" download="VSGV_Founders_Agreement.docx">
+          <span>Download DOCX</span>
+          <span class="cta-btn-arrow">&darr;</span>
+        </a>
+      </div>
+
+      <p class="partnership-footnote">
+        As Luke's employment situation changes over the coming years, this
+        Founders' Agreement ensures he doesn't get a free ride if he has to stop.
+        <em>But let's not think about that.</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- ---- Slide 5: The VSGV Process ---- -->
+  <section class="slide slide-process" data-slide="process">
+    <div class="process-wrap">
+      <div class="thesis-chapter">
+        <span class="num">iv.</span>
+        <span class="label">The VSGV Process</span>
+      </div>
+
+      <div class="process-head">
+        <h2 class="process-headline">
+          Left to right &mdash;<br/>
+          <em>napkin</em> to <span class="gummy">exit</span>.
+        </h2>
+        <p class="process-sub">
+          Every venture that lives under VSGV moves through the same five
+          stages. Here's what it costs &mdash; in dollars, and in gummies &mdash;
+          to push an idea from the first conversation out the far side.
+        </p>
+      </div>
+
+      <div class="pipeline">
+        <div class="stage">
+          <div class="stage-num">01</div>
+          <div class="stage-title">Ideation.</div>
+          <div class="stage-detail">A live list of candidates we could pursue, running at all times. No commitment; no spend beyond the cost of keeping the conversation fed.</div>
+          <div class="stage-cost"><em>$0</em> &mdash; gummies</div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-num">02</div>
+          <div class="stage-title">Validation.</div>
+          <div class="stage-detail">Market research, supply outreach, prototypes, and customer conversations &mdash; funded by the Rich Partner's loan into VSGV.</div>
+          <div class="stage-cost cost-big"><em>$20k &ndash; $250k</em></div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-num">03</div>
+          <div class="stage-title">Incubation.</div>
+          <div class="stage-detail">Sub-company incorporated. Skinny management hired. Founder loan converts at $1M post-money. <em>Raise outside capital if required.</em></div>
+          <div class="stage-cost"><em>New entity</em> &middot; ESOP</div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-num">04</div>
+          <div class="stage-title">Scale.</div>
+          <div class="stage-detail">Operators run the business. Luke and Jill move to the board as majority owners. <em>Raise outside capital if required.</em></div>
+          <div class="stage-cost"><em>Board seats</em> &middot; majority</div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-num">05</div>
+          <div class="stage-title">Sell the venture.</div>
+          <div class="stage-detail">Luke's life <em>completely changes</em>. Jill pays for part of a vacation. The vehicle lives on &mdash; capital cycles back into the next bet.</div>
+          <div class="stage-cost cost-exit"><em>Liquidity event</em></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---- Slide 6: Hot Girls (Project) ---- -->
+  <section class="slide slide-hotgirls" data-slide="hotgirls">
+    <div class="hg-wrap">
+      <div class="thesis-chapter">
+        <span class="num">v.</span>
+        <span class="label">First Product</span>
+      </div>
+
+      <div class="hg-head">
+        <h2 class="hg-headline">
+          Hot <span class="gummy">Girls</span>.
+        </h2>
+        <p class="hg-pitch">
+          <strong>An adhesive body-warmer for the woman who already owns the coat</strong>
+          &mdash; and still wants to be warm under the dress.
+          500-year-old Japanese tech (Kairo), reformulated for the fashion-conscious
+          American woman, in three climates.
+        </p>
+      </div>
+
+      <div class="hg-profiles">
+        <div class="profile">
+          <div class="p-eyebrow">01 &mdash; Mild</div>
+          <div class="p-title">Summer in California.</div>
+          <div class="p-sub">For the woman who runs cold indoors. Built for over-chilled offices, first-class seats, and dinners at a Nobu with the AC on high.</div>
+          <div class="p-specs"><span><em>~40&deg;C</em> avg</span><span><em>4&ndash;6 h</em></span></div>
+        </div>
+        <div class="profile">
+          <div class="p-eyebrow">02 &mdash; Moderate</div>
+          <div class="p-title">Fall in the Hamptons.</div>
+          <div class="p-sub">Shoulder-season warmth. Sits under knitwear and silk alike &mdash; keeps the shiver out of a dinner jacket without bulk.</div>
+          <div class="p-specs"><span><em>~50&deg;C</em> avg</span><span><em>8&ndash;10 h</em></span></div>
+        </div>
+        <div class="profile">
+          <div class="p-eyebrow">03 &mdash; Full output</div>
+          <div class="p-title">Winter in Jackson Hole.</div>
+          <div class="p-sub">The heavy hitter. High-output exotherm for real cold &mdash; tailored for the woman who skis at noon and dines in cashmere at seven.</div>
+          <div class="p-specs"><span><em>~60&deg;C</em> avg</span><span><em>12+ h</em></span></div>
+        </div>
+      </div>
+
+      <div class="hg-footer">
+        <div class="positioning">
+          <strong>Not <em>The Heat Company</em></strong> (outdoor, sport).
+          <strong>Not <em>Thermacare</em></strong> (medical, back pain).
+          <strong>Not <em>HotHands</em></strong> (commodity, ski lift).
+          Hot Girls is the first warmer engineered for daily wear under clothing,
+          at premium price, for an audience nobody in the US is talking to.
+        </div>
+        <div class="whitespace">
+          <div class="ws-label">Why now</div>
+          <div class="ws-copy">
+            Kairo is a <em>$500M+</em> category in Japan and functionally unknown in America.
+            Zero US brands target the fashion-conscious woman. The audience is obvious,
+            the tech is proven, the packaging is an open door.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---- Slide 7: Hot Girls (Plan / Gantt) ---- -->
+  <section class="slide slide-hgplan" data-slide="hotgirls-plan">
+    <div class="hgplan-wrap">
+      <div class="thesis-chapter">
+        <span class="num">v.</span>
+        <span class="label">Hot Girls &mdash; Roadmap</span>
+      </div>
+
+      <div class="hgplan-head">
+        <h2 class="hgplan-headline">
+          Three <em>streams</em>,<br/>
+          one <span class="gummy">November 1</span>.
+        </h2>
+        <p class="hgplan-sub">
+          <strong>Brand</strong> and <strong>Manufacturing</strong> are live today, in tandem.
+          <strong>Market Validation</strong> joins in as supply firms up.
+          Launch on <strong>November 1, 2026</strong> &mdash; roughly <strong>six months</strong> from today.
+        </p>
+      </div>
+
+      <div class="gantt" aria-label="Hot Girls roadmap Gantt chart">
+        <div class="gantt-corner">Stream</div>
+        <div class="gantt-months">
+          <span>Apr &ndash; May</span>
+          <span>Jun &ndash; Jul</span>
+          <span>Aug &ndash; Sep</span>
+          <span>Oct &rarr; <em>Nov 1</em></span>
+        </div>
+
+        <div class="gantt-label">Brand</div>
+        <div class="gantt-track">
+          <div class="gantt-bar bar-brand" style="grid-column: 1 / 3;">
+            <span class="bar-main">Create the brand</span>
+            <span class="bar-sub">identity &middot; site &middot; story</span>
+          </div>
+        </div>
+
+        <div class="gantt-label">Manufacturing</div>
+        <div class="gantt-track">
+          <div class="gantt-bar bar-mfg" style="grid-column: 1 / 5;">
+            <span class="bar-main">Secure manufacturing (via Travesia)</span>
+            <span class="bar-sub">Masato &rarr; mfg &rarr; packaging &rarr; logistics</span>
+          </div>
+        </div>
+
+        <div class="gantt-label">Market Validation</div>
+        <div class="gantt-track">
+          <div class="gantt-bar bar-val" style="grid-column: 2 / 5;">
+            <span class="bar-main">Validate market</span>
+            <span class="bar-sub">pricing, channels, demand</span>
+          </div>
+        </div>
+
+        <div class="gantt-label">Launch</div>
+        <div class="gantt-track">
+          <div class="gantt-bar bar-launch" style="grid-column: 4 / 5;">
+            <span class="bar-main">Nov 1 &middot; launch day</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="travesia">
+        <div class="tv-left">
+          <div class="tv-label">Manufacturing &mdash; via Travesia</div>
+          <div class="tv-title">Masato is our man in country.</div>
+          <div class="tv-sub">Travesia owns the path from first handshake to the pallet landing in California.</div>
+        </div>
+        <div class="tv-path">
+          <div class="tv-step">
+            <div class="tv-n">01</div>
+            <div class="tv-name">Relationship<br/>with <em>Masato</em>.</div>
+          </div>
+          <div class="tv-arrow">&rarr;</div>
+          <div class="tv-step">
+            <div class="tv-n">02</div>
+            <div class="tv-name">Manufacturing<br/>partner (JP).</div>
+          </div>
+          <div class="tv-arrow">&rarr;</div>
+          <div class="tv-step">
+            <div class="tv-n">03</div>
+            <div class="tv-name">Packaging<br/>partner.</div>
+          </div>
+          <div class="tv-arrow">&rarr;</div>
+          <div class="tv-step">
+            <div class="tv-n">04</div>
+            <div class="tv-name">Import/export<br/>JP &rarr; CA.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---- Slide 8: Next Steps ---- -->
+  <section class="slide slide-next" data-slide="next">
+    <div class="next-wrap">
+      <div class="thesis-chapter">
+        <span class="num">vi.</span>
+        <span class="label">Next Steps</span>
+      </div>
+
+      <div class="next-head">
+        <h2 class="next-headline">
+          A few <em>decisions</em>,<br/>
+          and a <span class="gummy">runway</span>.
+        </h2>
+        <p class="next-sub">
+          Nothing here is irreversible. The first call is just whether we
+          want to start pointing VSGV at something real &mdash; and, if yes,
+          which shape the first bet takes.
+        </p>
+      </div>
+
+      <div class="next-grid">
+        <div class="decisions">
+          <div class="opt-eyebrow">What we need from you</div>
+          <ol class="decision-list">
+            <li>
+              <div class="decision-num">01</div>
+              <div class="decision-body">
+                <div class="decision-title"><em>Yes or no</em> on the partnership.</div>
+                <div class="decision-sub">Read the Founders' Agreement, mark it up, send it back.</div>
+              </div>
+            </li>
+            <li>
+              <div class="decision-num">02</div>
+              <div class="decision-body">
+                <div class="decision-title"><em>Yes or no</em> on lending, as-needed.</div>
+                <div class="decision-sub">Jill loans VSGV operational expenses on an as-needed basis &mdash; sits as debt, converts at $1M on any sub we incorporate.</div>
+              </div>
+            </li>
+            <li>
+              <div class="decision-num">03</div>
+              <div class="decision-body">
+                <div class="decision-title"><em>Start running</em> towards Hot Girls.</div>
+                <div class="decision-sub">Greenlight the validation spend, the Travesia relationship, and the first brand sprints.</div>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="funnel">
+          <div class="opt-eyebrow">What else is in the funnel</div>
+          <h3 class="funnel-title">Just a <em>place</em> for this kind of ideation and base-hit creation to happen.</h3>
+          <ul class="opt-list">
+            <li>
+              <div>
+                <div class="opt-name"><em>EMS Studio</em> &mdash; grow the asset Jill already owns.</div>
+                <div class="opt-sub">Jill operates one studio today; the pull is figuring out how to grow and expand (starting in Hawaii).</div>
+              </div>
+              <span class="opt-stage">Ideation</span>
+            </li>
+            <li>
+              <div>
+                <div class="opt-name"><em>Psychics</em> &mdash; consumer brand play.</div>
+                <div class="opt-sub">Luke has done early work on this inside his Stripmall vehicle &mdash; worth a conversation about moving it over.</div>
+              </div>
+              <span class="opt-stage">Ideation</span>
+            </li>
+            <li>
+              <div>
+                <div class="opt-name"><em>Shirin's Bathhouse</em> &mdash; software for London.</div>
+                <div class="opt-sub">Custom booking + experience software powering a single-location operator.</div>
+              </div>
+              <span class="opt-stage">Ideation</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </section>
 
   <nav class="nav" aria-label="Slide navigation">
@@ -950,6 +3277,33 @@
   const submitBtn = document.getElementById('gate-submit');
   const errEl = document.getElementById('gate-error');
 
+  // Deck nav refs — hoisted above session-autounlock so render()
+  // has access when showDeck() is called early.
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const counter = document.getElementById('counter');
+  const progressBar = document.getElementById('progress-bar');
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
+  let current = 0;
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function render() {
+    slides.forEach((s, i) => s.classList.toggle('active', i === current));
+    counter.textContent = `${pad(current + 1)} / ${pad(slides.length)}`;
+    const pct = slides.length <= 1 ? 100 : (current / (slides.length - 1)) * 100;
+    progressBar.style.width = pct + '%';
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === slides.length - 1;
+  }
+
+  function go(delta) {
+    const next = Math.min(slides.length - 1, Math.max(0, current + delta));
+    if (next === current) return;
+    current = next;
+    render();
+  }
+
   function showDeck() {
     gateEl.classList.add('hidden');
     deckEl.classList.add('visible');
@@ -1014,36 +3368,32 @@
   });
 
   // ───────────────────────────────────────────
-  // Deck navigation (single slide today; built
-  // for more tomorrow)
+  // Deck navigation
   // ───────────────────────────────────────────
-  const slides = Array.from(document.querySelectorAll('.slide'));
-  const counter = document.getElementById('counter');
-  const progressBar = document.getElementById('progress-bar');
-  const prevBtn = document.getElementById('prev');
-  const nextBtn = document.getElementById('next');
-  let current = 0;
-
-  function pad(n) { return String(n).padStart(2, '0'); }
-
-  function render() {
-    slides.forEach((s, i) => s.classList.toggle('active', i === current));
-    counter.textContent = `${pad(current + 1)} / ${pad(slides.length)}`;
-    const pct = slides.length <= 1 ? 100 : (current / (slides.length - 1)) * 100;
-    progressBar.style.width = pct + '%';
-    prevBtn.disabled = current === 0;
-    nextBtn.disabled = current === slides.length - 1;
-  }
-
-  function go(delta) {
-    const next = Math.min(slides.length - 1, Math.max(0, current + delta));
-    if (next === current) return;
-    current = next;
-    render();
-  }
-
   prevBtn.addEventListener('click', () => go(-1));
   nextBtn.addEventListener('click', () => go(1));
+
+  // Clickable agenda: jump straight to a section from the overview
+  function jumpToSlug(slug) {
+    const idx = slides.findIndex(s => s.dataset.slide === slug);
+    if (idx >= 0) {
+      current = idx;
+      render();
+      window.scrollTo(0, 0);
+    }
+  }
+
+  document.querySelectorAll('[data-goto-slide]').forEach(el => {
+    el.setAttribute('role', 'button');
+    el.setAttribute('tabindex', '0');
+    el.addEventListener('click', () => jumpToSlug(el.dataset.gotoSlide));
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        jumpToSlug(el.dataset.gotoSlide);
+      }
+    });
+  });
 
   document.addEventListener('keydown', (e) => {
     if (gateEl && !gateEl.classList.contains('hidden')) return;
