@@ -2622,17 +2622,6 @@
 
     <form class="gate-form" id="gate-form" autocomplete="off">
       <div class="field">
-        <label for="gate-email">Your Email</label>
-        <input
-          type="email"
-          id="gate-email"
-          name="email"
-          placeholder="name@domain.com"
-          autocomplete="email"
-          required
-        >
-      </div>
-      <div class="field">
         <label for="gate-pass">Access Word</label>
         <input
           type="password"
@@ -2640,6 +2629,7 @@
           name="password"
           placeholder="———"
           autocomplete="current-password"
+          autofocus
           required
         >
       </div>
@@ -3132,14 +3122,7 @@
   // ───────────────────────────────────────────
   // Gate — SHA-256 hash check
   // ───────────────────────────────────────────
-  const PASS_HASH = 'ba82f916935b35d170cce88469d0bbb4551f0ed55fbd2a2a6f5b4d4c3ed896e2';
-  const EMAIL_HASHES = new Set([
-    '0a2faea4926cd7b8191eeab153ab217965d4c193c7c4505cc3b70747d29fe7d9',
-    '33a805f6e23f045d3e5bf8f3d891b972d4aa76be205dabe63d4d172eac667c42',
-    '038e3eff79d5d45aad7abd384b6a03f0e4b094a5ccec7ce25a40e853e4cfeb34',
-    '6e19d71eed3e7c4a77761ac0fd6eba1e90db26d0427e74a7657f74ff707af1fa',
-    'da61c9e6a8777453f9b991193780c434dd6fa2879078d89a19c7a697989459f5',
-  ]);
+  const PASS_HASH = '6f011d42f06f73c730ccab6c42ded54c1406d88b470d39323b7f0dd0c6011732';
 
   const SESSION_KEY = 'spring_shed_session_v1';
 
@@ -3233,7 +3216,6 @@
   }
 
   const form = document.getElementById('gate-form');
-  const emailInput = document.getElementById('gate-email');
   const passInput = document.getElementById('gate-pass');
   const submitBtn = document.getElementById('gate-submit');
   const errEl = document.getElementById('gate-error');
@@ -3249,40 +3231,31 @@
     submitBtn.disabled = true;
     submitBtn.textContent = 'Verifying…';
 
-    const email = emailInput.value.trim().toLowerCase();
-    const pass  = passInput.value.trim().toLowerCase();
+    // Case-insensitive: normalize to lowercase before hashing.
+    const pass = passInput.value.trim().toLowerCase();
 
-    await new Promise(r => setTimeout(r, 420));
+    await new Promise(r => setTimeout(r, 360));
 
     try {
-      const [emailHash, passHash] = await Promise.all([
-        sha256(email),
-        sha256(pass),
-      ]);
+      const passHash = await sha256(pass);
 
-      const emailOk = EMAIL_HASHES.has(emailHash);
-      const passOk  = passHash === PASS_HASH;
-
-      if (emailOk && passOk) {
+      if (passHash === PASS_HASH) {
         try {
           localStorage.setItem(SESSION_KEY, 'ok');
           sessionStorage.setItem(SESSION_KEY, 'ok');
         } catch(_) {}
         // Notify Luke that someone just accessed the deck — fire-and-forget.
-        // Formspree accepts JSON POSTs; we don't await it so login is instant
-        // even if the service is slow/unreachable.
         try {
           fetch('https://formspree.io/f/xaqaodrb', {
             method: 'POST',
             mode: 'no-cors',
             headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
             body: JSON.stringify({
-              email,
               event: 'Spring deck login',
               timestamp: new Date().toISOString(),
               userAgent: navigator.userAgent,
               referrer: document.referrer || '(direct)',
-              _subject: `Spring deck login — ${email}`,
+              _subject: 'Spring deck login',
             }),
           }).catch(() => {});
         } catch(_) {}
@@ -3291,7 +3264,7 @@
       } else {
         submitBtn.disabled = false;
         submitBtn.textContent = 'Enter';
-        setError('Those credentials don\u2019t match our list.');
+        setError('That\u2019s not quite the word.');
         passInput.value = '';
         passInput.focus();
       }
