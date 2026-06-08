@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ForwardDeploy — On the frontlines of AI deployment</title>
+<meta name="description" content="Canada's AI deployment company. We embed forward deployed engineers inside enterprises to take AI from pilot to production.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="ForwardDeploy">
+<meta property="og:description" content="On the frontlines of AI deployment. Forward deployed engineering for Canadian enterprise.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap">
+<style>
+  :root {
+    --ink:        #031B27;
+    --ink-2:      #0B2A3A;
+    --blue:       #1456FB;
+    --blue-deep:  #0B3AC0;
+    --lime:       #D4FF00;
+    --white:      #FFFFFF;
+    --paper:      #F6F8FA;
+    --mute:       #5A6B75;
+    --mute-on-dark: rgba(255,255,255,0.62);
+    --hair:       rgba(3,27,39,0.12);
+    --hair-on-dark: rgba(255,255,255,0.14);
+
+    --display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--lime); color: var(--ink); }
+
+  a { color: inherit; text-decoration: none; }
+
+  .wrap { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+  h1, h2, h3 { font-family: var(--display); font-weight: 600; letter-spacing: -0.02em; line-height: 1.04; }
+
+  .eyebrow {
+    font-family: var(--display);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--blue);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 28px; height: 1px;
+    background: var(--blue);
+    display: inline-block;
+  }
+  .eyebrow.on-dark { color: var(--lime); }
+  .eyebrow.on-dark::before { background: var(--lime); }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.82);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .3s ease, background .3s ease;
+  }
+  nav.scrolled { border-bottom: 1px solid var(--hair); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 700; font-size: 19px; letter-spacing: -0.02em; }
+  .brand .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 3px rgba(212,255,0,0.25); }
+  .nav-links { display: flex; align-items: center; gap: 34px; }
+  .nav-links a { font-size: 14.5px; font-weight: 500; color: var(--ink-2); transition: color .2s; }
+  .nav-links a:hover { color: var(--blue); }
+  .nav-cta {
+    font-family: var(--display); font-weight: 600; font-size: 14px;
+    background: var(--ink); color: var(--white);
+    padding: 11px 20px; border-radius: 100px; transition: background .2s, transform .2s;
+  }
+  .nav-cta:hover { background: var(--blue); transform: translateY(-1px); }
+  .nav-toggle { display: none; }
+
+  /* ---------- HERO ---------- */
+  .hero { position: relative; padding: 188px 0 96px; overflow: hidden; }
+  .hero::after {
+    content: ''; position: absolute; right: -10%; top: 8%;
+    width: 620px; height: 620px;
+    background: radial-gradient(circle, rgba(20,86,251,0.10), transparent 62%);
+    z-index: -1; pointer-events: none;
+  }
+  .hero h1 { font-size: clamp(44px, 7.2vw, 94px); font-weight: 600; max-width: 16ch; }
+  .hero h1 .grad { color: var(--blue); }
+  .hero .sub { margin-top: 28px; font-size: clamp(18px, 2.2vw, 23px); color: var(--mute); max-width: 46ch; font-weight: 400; }
+  .hero .cta-row { margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap; }
+
+  .btn {
+    font-family: var(--display); font-weight: 600; font-size: 15px;
+    padding: 15px 28px; border-radius: 100px; display: inline-flex; align-items: center; gap: 9px;
+    transition: transform .2s, background .2s, color .2s, box-shadow .2s; cursor: pointer; border: none;
+  }
+  .btn-primary { background: var(--blue); color: var(--white); }
+  .btn-primary:hover { background: var(--ink); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(20,86,251,0.28); }
+  .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--hair); }
+  .btn-ghost:hover { border-color: var(--ink); transform: translateY(-2px); }
+  .btn .arr { transition: transform .2s; }
+  .btn:hover .arr { transform: translate(3px,-3px); }
+
+  .hero-stats { margin-top: 80px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; border-top: 1px solid var(--hair); padding-top: 36px; }
+  .stat .num { font-family: var(--display); font-weight: 600; font-size: clamp(30px, 4vw, 46px); letter-spacing: -0.03em; color: var(--ink); line-height: 1; }
+  .stat .num span { color: var(--blue); }
+  .stat .lab { margin-top: 10px; font-size: 13.5px; color: var(--mute); line-height: 1.4; }
+
+  /* ---------- ANNOUNCEMENT BAR ---------- */
+  .announce { background: var(--ink); color: var(--white); }
+  .announce .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 22px; padding-bottom: 22px; flex-wrap: wrap; }
+  .announce .tag { font-family: var(--display); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); background: var(--lime); padding: 5px 10px; border-radius: 5px; }
+  .announce .msg { font-size: 16px; flex: 1; min-width: 240px; }
+  .announce .msg b { font-weight: 600; }
+  .announce a.more { font-family: var(--display); font-weight: 600; font-size: 14px; color: var(--lime); white-space: nowrap; }
+  .announce a.more:hover { text-decoration: underline; }
+
+  /* ---------- SECTION SHELL ---------- */
+  section.block { padding: 110px 0; }
+  .section-head { max-width: 760px; }
+  .section-head h2 { font-size: clamp(32px, 4.6vw, 56px); margin-top: 20px; }
+  .section-head p { margin-top: 22px; font-size: 19px; color: var(--mute); max-width: 56ch; }
+
+  .dark { background: var(--ink); color: var(--white); }
+  .dark .section-head p { color: var(--mute-on-dark); }
+  .dark h2, .dark h3 { color: var(--white); }
+
+  /* value prop */
+  .vp { padding: 120px 0; }
+  .vp .big { font-family: var(--display); font-weight: 500; font-size: clamp(30px, 4.6vw, 58px); letter-spacing: -0.025em; line-height: 1.1; max-width: 20ch; }
+  .vp .big em { font-style: normal; color: var(--blue); }
+  .vp .note { margin-top: 30px; font-size: 18px; color: var(--mute); max-width: 50ch; }
+
+  /* origin / chassis */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .origin-card { background: var(--paper); border: 1px solid var(--hair); border-radius: 20px; padding: 40px; }
+  .origin-card .lede { font-family: var(--display); font-weight: 500; font-size: 22px; letter-spacing: -0.01em; line-height: 1.3; }
+  .origin-card ul { list-style: none; margin-top: 26px; display: grid; gap: 16px; }
+  .origin-card li { display: flex; gap: 14px; font-size: 15.5px; color: var(--ink-2); }
+  .origin-card li .k { color: var(--blue); font-weight: 700; flex: 0 0 auto; font-family: var(--display); }
+
+  /* acquisition badge */
+  .acq-badge { margin-top: 30px; display: inline-flex; align-items: center; gap: 14px; padding: 13px 20px; border: 1px solid var(--hair); border-radius: 100px; background: var(--paper); font-family: var(--display); font-weight: 600; flex-wrap: wrap; }
+  .acq-badge .acq-from { color: var(--mute); font-size: 17px; }
+  .acq-badge .acq-arrow { color: var(--blue); font-size: 17px; }
+  .acq-badge .acq-to { display: inline-flex; align-items: center; gap: 8px; font-size: 17px; color: var(--ink); }
+  .acq-badge .acq-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 3px rgba(212,255,0,0.25); }
+  .acq-badge .acq-note { font-size: 11.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); border-left: 1px solid var(--hair); padding-left: 14px; }
+
+  /* backed-by logo strip */
+  .logostrip { padding: 58px 0 64px; border-bottom: 1px solid var(--hair); }
+  .logostrip-label { text-align: center; font-family: var(--display); font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mute); margin-bottom: 36px; }
+  .logostrip-label b { color: var(--ink); font-weight: 700; }
+  .logos { display: flex; align-items: center; justify-content: center; gap: 60px; flex-wrap: wrap; }
+  .logo-item { display: flex; align-items: center; gap: 11px; color: var(--ink); opacity: 0.5; transition: opacity .25s, transform .25s; }
+  .logo-item:hover { opacity: 1; transform: translateY(-2px); }
+  .logo-item .lw { font-family: var(--display); font-weight: 700; letter-spacing: -0.01em; font-size: 26px; line-height: 1; }
+  .logo-item svg { display: block; flex: 0 0 auto; }
+
+  /* principles */
+  .principles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; margin-top: 64px; border: 1px solid var(--hair-on-dark); border-radius: 20px; overflow: hidden; }
+  .principle { padding: 44px 40px; border-right: 1px solid var(--hair-on-dark); border-bottom: 1px solid var(--hair-on-dark); }
+  .principle:nth-child(2n) { border-right: none; }
+  .principle:nth-last-child(-n+2) { border-bottom: none; }
+  .principle .pn { font-family: var(--display); font-weight: 600; font-size: 14px; color: var(--lime); }
+  .principle h3 { font-size: 24px; margin: 16px 0 12px; }
+  .principle p { font-size: 15.5px; color: var(--mute-on-dark); }
+
+  /* sectors */
+  .sectors { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px; }
+  .sector { border: 1px solid var(--hair); border-radius: 18px; padding: 34px; transition: transform .25s, box-shadow .25s, border-color .25s; background: var(--white); }
+  .sector:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(3,27,39,0.08); border-color: transparent; }
+  .sector .ic { width: 46px; height: 46px; border-radius: 12px; background: var(--ink); color: var(--lime); display: flex; align-items: center; justify-content: center; font-family: var(--display); font-weight: 700; font-size: 20px; }
+  .sector h3 { font-size: 21px; margin: 22px 0 10px; }
+  .sector p { font-size: 15px; color: var(--mute); }
+
+  /* deployment examples */
+  .cases { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 60px; }
+  .case { background: var(--paper); border-radius: 22px; padding: 44px; border: 1px solid var(--hair); }
+  .case .who { font-family: var(--display); font-weight: 600; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--blue); }
+  .case .headline { font-family: var(--display); font-weight: 500; font-size: 26px; letter-spacing: -0.01em; line-height: 1.25; margin: 18px 0 20px; }
+  .case .metric { display: flex; gap: 30px; flex-wrap: wrap; margin-top: 26px; padding-top: 24px; border-top: 1px solid var(--hair); }
+  .case .metric .m .v { font-family: var(--display); font-weight: 600; font-size: 30px; color: var(--ink); letter-spacing: -0.02em; }
+  .case .metric .m .l { font-size: 13px; color: var(--mute); margin-top: 4px; }
+
+  /* deployment to product */
+  .flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 60px; }
+  .flow-step { padding: 0 28px; position: relative; }
+  .flow-step:not(:last-child)::after { content: '→'; position: absolute; right: -10px; top: 4px; color: var(--blue); font-size: 20px; }
+  .flow-step .fn { font-family: var(--display); font-weight: 600; font-size: 13px; color: var(--blue); letter-spacing: 0.08em; text-transform: uppercase; }
+  .flow-step h3 { font-size: 20px; margin: 12px 0 10px; }
+  .flow-step p { font-size: 14.5px; color: var(--mute); }
+
+  /* backed / capital */
+  .backed { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .backed-points { display: grid; gap: 22px; }
+  .backed-points .bp { padding-left: 22px; border-left: 2px solid var(--lime); }
+  .backed-points .bp h3 { font-size: 19px; color: var(--white); }
+  .backed-points .bp p { font-size: 15px; color: var(--mute-on-dark); margin-top: 6px; }
+
+  /* leadership */
+  .team { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 60px; }
+  .person { }
+  .person .av { width: 100%; aspect-ratio: 1/1; border-radius: 18px; background: linear-gradient(150deg, var(--ink), var(--blue-deep)); display: flex; align-items: flex-end; padding: 22px; }
+  .person .av .ini { font-family: var(--display); font-weight: 700; font-size: 40px; color: var(--lime); letter-spacing: -0.02em; }
+  .person h3 { font-size: 21px; margin: 20px 0 4px; }
+  .person .role { font-family: var(--display); font-weight: 500; font-size: 14px; color: var(--blue); }
+  .person p { font-size: 14.5px; color: var(--mute); margin-top: 12px; }
+
+  /* CTA */
+  .final { background: var(--blue); color: var(--white); text-align: center; padding: 130px 0; position: relative; overflow: hidden; }
+  .final::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% -20%, rgba(212,255,0,0.22), transparent 55%); }
+  .final .wrap { position: relative; }
+  .final h2 { font-size: clamp(36px, 5.6vw, 68px); color: var(--white); max-width: 18ch; margin: 0 auto; }
+  .final p { margin: 26px auto 0; font-size: 20px; color: rgba(255,255,255,0.82); max-width: 46ch; }
+  .final .cta-row { justify-content: center; margin-top: 42px; display: flex; gap: 16px; flex-wrap: wrap; }
+  .final .btn-primary { background: var(--lime); color: var(--ink); }
+  .final .btn-primary:hover { background: var(--white); box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
+  .final .btn-ghost { color: var(--white); border-color: rgba(255,255,255,0.4); }
+  .final .btn-ghost:hover { border-color: var(--white); }
+
+  /* footer */
+  footer { background: var(--ink); color: var(--white); padding: 72px 0 40px; }
+  .foot-top { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; padding-bottom: 48px; border-bottom: 1px solid var(--hair-on-dark); }
+  .foot-brand { max-width: 320px; }
+  .foot-brand .brand { font-size: 22px; margin-bottom: 14px; }
+  .foot-brand p { font-size: 14.5px; color: var(--mute-on-dark); }
+  .foot-cols { display: flex; gap: 64px; flex-wrap: wrap; }
+  .foot-col h4 { font-family: var(--display); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mute-on-dark); margin-bottom: 16px; font-weight: 600; }
+  .foot-col a { display: block; font-size: 14.5px; color: rgba(255,255,255,0.85); margin-bottom: 10px; transition: color .2s; }
+  .foot-col a:hover { color: var(--lime); }
+  .foot-bottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 28px; font-size: 13px; color: var(--mute-on-dark); }
+
+  /* reveal */
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 900px) {
+    .split, .backed { grid-template-columns: 1fr; gap: 36px; }
+    .sectors, .team, .flow { grid-template-columns: 1fr; }
+    .flow-step { padding: 24px 0; border-top: 1px solid var(--hair); }
+    .flow-step:first-child { border-top: none; }
+    .flow-step::after { display: none; }
+    .cases { grid-template-columns: 1fr; }
+    .hero-stats { grid-template-columns: 1fr 1fr; gap: 28px 20px; }
+  }
+  @media (max-width: 700px) {
+    .wrap { padding: 0 22px; }
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0;
+      background: var(--white); border-bottom: 1px solid var(--hair); padding: 18px 22px 26px; gap: 18px; align-items: flex-start;
+    }
+    .nav-toggle { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
+    .nav-toggle span { width: 22px; height: 2px; background: var(--ink); display: block; }
+    .hero { padding: 132px 0 72px; }
+    section.block, .vp { padding: 72px 0; }
+    .principles { grid-template-columns: 1fr; }
+    .principle { border-right: none; }
+    .principle:nth-last-child(2) { border-bottom: 1px solid var(--hair-on-dark); }
+    .origin-card { padding: 28px; }
+    .case { padding: 30px; }
+  }
+
+  /* ---------- GATE ---------- */
+  body.gated { overflow: hidden; }
+  body.gated #site { display: none; }
+  body:not(.gated) .fd-gate { display: none; }
+  .fd-gate {
+    position: fixed; inset: 0; z-index: 9999;
+    background:
+      radial-gradient(circle at 78% 14%, rgba(20,86,251,0.28), transparent 52%),
+      var(--ink);
+    color: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    padding: 40px 24px;
+  }
+  .fd-gate-inner { width: 100%; max-width: 440px; text-align: left; }
+  .fd-gate-brand { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 700; font-size: 19px; letter-spacing: -0.02em; margin-bottom: 40px; }
+  .fd-gate-brand .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 3px rgba(212,255,0,0.25); }
+  .fd-gate-title { font-family: var(--display); font-weight: 600; letter-spacing: -0.02em; line-height: 1.06; font-size: clamp(30px, 5vw, 42px); margin: 18px 0 0; }
+  .fd-gate-title .grad { color: var(--blue); }
+  .fd-gate-sub { margin-top: 16px; font-size: 16px; color: var(--mute-on-dark); line-height: 1.55; }
+  .fd-gate-form { margin-top: 32px; }
+  .fd-gate-input {
+    width: 100%; font-family: var(--sans); font-size: 16px; color: var(--white);
+    background: rgba(255,255,255,0.06); border: 1px solid var(--hair-on-dark);
+    border-radius: 100px; padding: 15px 22px; outline: none;
+    transition: border-color .2s, background .2s;
+  }
+  .fd-gate-input::placeholder { color: rgba(255,255,255,0.4); }
+  .fd-gate-input:focus { border-color: var(--blue); background: rgba(255,255,255,0.09); }
+  .fd-gate-submit {
+    margin-top: 14px; width: 100%; font-family: var(--display); font-weight: 600; font-size: 15px;
+    background: var(--blue); color: var(--white); border: none; cursor: pointer;
+    border-radius: 100px; padding: 15px 28px; transition: background .2s, transform .2s;
+  }
+  .fd-gate-submit:hover { background: var(--lime); color: var(--ink); transform: translateY(-1px); }
+  .fd-gate-submit:disabled { opacity: 0.5; cursor: wait; transform: none; }
+  .fd-gate-error { margin-top: 14px; font-size: 14px; color: #FF8A7A; min-height: 20px; opacity: 0; transition: opacity .2s; }
+  .fd-gate-error.visible { opacity: 1; }
+  .fd-gate-foot { margin-top: 36px; font-size: 12.5px; color: var(--mute-on-dark); }
+</style>
+</head>
+<body class="gated">
+
+<!-- GATE -->
+<div class="fd-gate" id="fdgate">
+  <div class="fd-gate-inner">
+    <div class="fd-gate-brand"><span class="dot"></span>ForwardDeploy</div>
+    <span class="eyebrow on-dark">Private preview</span>
+    <h1 class="fd-gate-title">On the frontlines of <span class="grad">AI deployment.</span></h1>
+    <p class="fd-gate-sub">This preview is private. Enter the password to continue.</p>
+    <form class="fd-gate-form" id="fdgate-form" autocomplete="off">
+      <input class="fd-gate-input" type="password" id="fdgate-pass" name="password" placeholder="Password" autocomplete="current-password" aria-label="Password" autofocus>
+      <button type="submit" class="fd-gate-submit" id="fdgate-submit">Enter</button>
+      <div class="fd-gate-error" id="fdgate-error">&nbsp;</div>
+    </form>
+    <div class="fd-gate-foot">ForwardDeploy · Concept site</div>
+  </div>
+</div>
+
+<div id="site">
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top"><span class="dot"></span>ForwardDeploy</a>
+    <div class="nav-links" id="navlinks">
+      <a href="#approach">Approach</a>
+      <a href="#sectors">Sectors</a>
+      <a href="#work">Work</a>
+      <a href="#backed">Backing</a>
+      <a href="#team">Team</a>
+      <a class="nav-cta" href="#contact">Get in touch</a>
+    </div>
+    <button class="nav-toggle" id="navtoggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Canada's AI deployment company</span>
+    </div>
+    <h1 class="reveal">On the frontlines of <span class="grad">AI deployment.</span></h1>
+    <p class="sub reveal">Forward deployed engineering for Canadian enterprise. We embed senior engineers inside your organization and take AI from pilot to production — in the real world, on real workflows, with measurable impact.</p>
+    <div class="cta-row reveal">
+      <a class="btn btn-primary" href="#contact">Start a deployment <span class="arr">↗</span></a>
+      <a class="btn btn-ghost" href="#approach">How we work</a>
+    </div>
+
+    <div class="hero-stats reveal">
+      <div class="stat"><div class="num">50<span>+</span></div><div class="lab">Forward deployed engineers, day one</div></div>
+      <div class="stat"><div class="num">$100<span>M+</span></div><div class="lab">Raised from Canadian institutions</div></div>
+      <div class="stat"><div class="num">4<span>.</span></div><div class="lab">Anchor backers: Sagard, RBC, BDC, Constellation</div></div>
+      <div class="stat"><div class="num">100<span>%</span></div><div class="lab">Canadian data residency &amp; control</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ANNOUNCEMENT -->
+<div class="announce">
+  <div class="wrap">
+    <span class="tag">Acquisition</span>
+    <div class="msg"><b>ForwardDeploy has acquired Boosted</b> — the AI engineering firm becomes the founding team behind Canada's AI deployment company.</div>
+    <a class="more" href="#origin">Read more ↗</a>
+  </div>
+</div>
+
+<!-- BACKED BY -->
+<section class="logostrip" id="backers">
+  <div class="wrap">
+    <p class="logostrip-label">Backed by Canada's leading institutions · <b>$100M+ raised</b></p>
+    <div class="logos">
+      <div class="logo-item" title="Sagard">
+        <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="13" r="11" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="13" cy="13" r="4" fill="currentColor"/></svg>
+        <span class="lw" style="font-weight:500;">Sagard</span>
+      </div>
+      <div class="logo-item" title="RBC">
+        <svg width="24" height="28" viewBox="0 0 24 28" aria-hidden="true"><path d="M3 3 H21 V15 C21 22 12 26 12 26 C12 26 3 22 3 15 Z" fill="currentColor"/></svg>
+        <span class="lw">RBC</span>
+      </div>
+      <div class="logo-item" title="BDC">
+        <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><rect x="1" y="1" width="20" height="20" rx="6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        <span class="lw">BDC</span>
+      </div>
+      <div class="logo-item" title="Constellation">
+        <svg width="28" height="26" viewBox="0 0 28 26" aria-hidden="true"><path d="M4 8 L13 4 L22 10 L18 21 L9 17 Z" fill="none" stroke="currentColor" stroke-width="0.9" opacity="0.55"/><g fill="currentColor"><circle cx="4" cy="8" r="1.7"/><circle cx="13" cy="4" r="1.7"/><circle cx="22" cy="10" r="1.7"/><circle cx="18" cy="21" r="1.7"/><circle cx="9" cy="17" r="1.7"/></g></svg>
+        <span class="lw" style="font-weight:500;">Constellation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUE PROP -->
+<section class="vp">
+  <div class="wrap reveal">
+    <div class="big">We turn enterprise ambition into <em>production-ready AI</em> — fast.</div>
+    <p class="note">Most AI never leaves the pilot. We exist to close the gap between what a model can do in a demo and what it does in production, inside the systems your business actually runs on.</p>
+  </div>
+</section>
+
+<!-- ORIGIN / CHASSIS -->
+<section class="block" id="origin" style="padding-top:0;">
+  <div class="wrap split">
+    <div class="reveal">
+      <span class="eyebrow">Founding acquisition</span>
+      <h2 style="font-size:clamp(30px,4.4vw,52px); margin-top:18px;">A real engineering team, not a slide deck.</h2>
+      <p style="margin-top:22px; font-size:18px; color:var(--mute); max-width:48ch;">ForwardDeploy was founded on the acquisition of Boosted — an AI engineering firm shipping production software across healthcare, fintech and insurance since 2023. We didn't assemble a team to chase the moment. We acquired a proven one and gave it institutional capital, a captive enterprise pipeline, and a national mandate.</p>
+      <div class="acq-badge">
+        <span class="acq-from">Boosted</span>
+        <span class="acq-arrow">→</span>
+        <span class="acq-to"><span class="acq-dot"></span>ForwardDeploy</span>
+        <span class="acq-note">Acquired 2026</span>
+      </div>
+    </div>
+    <div class="origin-card reveal">
+      <div class="lede">The deployment company model, localized for Canada.</div>
+      <ul>
+        <li><span class="k">01</span><span>Senior engineers embedded on-site, not a managed-service ticket queue.</span></li>
+        <li><span class="k">02</span><span>Frontier-model agnostic — we deploy the right model for the problem, including Canadian sovereign options.</span></li>
+        <li><span class="k">03</span><span>Backed by the institutions whose portfolios we serve, aligning capital with deployment.</span></li>
+        <li><span class="k">04</span><span>Outcomes underwritten to measurable business impact, not billable hours.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH / FDE -->
+<section class="block dark" id="approach">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow on-dark">Forward deployed engineering</span>
+      <h2>How AI actually reaches production.</h2>
+      <p>Forward deployed engineering is how we bring AI systems into production for complex, real-world problems. Rather than starting from a general-purpose product, our teams work directly with your people to solve a specific challenge, prove measurable impact, then find the patterns worth scaling.</p>
+    </div>
+
+    <div class="principles">
+      <div class="principle reveal"><div class="pn">01</div><h3>Build from first principles</h3><p>We start with your problem and your data, not a template. Every deployment is designed around the workflow it has to live inside.</p></div>
+      <div class="principle reveal"><div class="pn">02</div><h3>Prioritize speed and real impact</h3><p>Early value in weeks, not quarters. We ship into production fast, then iterate against results that the business can see.</p></div>
+      <div class="principle reveal"><div class="pn">03</div><h3>Work beside domain experts</h3><p>Our engineers sit with your team. The people who know the work shape the system — that's where reliable AI comes from.</p></div>
+      <div class="principle reveal"><div class="pn">04</div><h3>Deliver early, then scale</h3><p>We prove it on one workflow, capture the pattern, and expand across the organization with confidence and controls.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS -->
+<section class="block" id="sectors">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Where we deploy</span>
+      <h2>Built for the industries that run Canada.</h2>
+      <p>We focus where deployment is hardest and the stakes are highest — regulated, data-rich sectors where AI has to be trusted to touch the core of the business.</p>
+    </div>
+    <div class="sectors">
+      <div class="sector reveal"><div class="ic">$</div><h3>Financial services</h3><p>Underwriting, advisory, operations and risk — AI deployed inside banks, insurers and asset managers, with the controls regulators expect.</p></div>
+      <div class="sector reveal"><div class="ic">◇</div><h3>Wealth &amp; insurance</h3><p>From client servicing to claims and portfolio operations, we turn advisor and adjuster workflows into AI-native processes.</p></div>
+      <div class="sector reveal"><div class="ic">⬡</div><h3>Public sector</h3><p>Sovereign-grade deployments for government and crown corporations — Canadian data, Canadian control, citizen-facing impact.</p></div>
+      <div class="sector reveal"><div class="ic">↗</div><h3>Healthcare &amp; benefits</h3><p>Administrative automation and decision support across health and benefits operations, built for privacy from the ground up.</p></div>
+      <div class="sector reveal"><div class="ic">⬢</div><h3>Energy &amp; resources</h3><p>Operational intelligence for the industries that power the country — field-grade AI for complex physical operations.</p></div>
+      <div class="sector reveal"><div class="ic">＋</div><h3>The portfolio</h3><p>Our anchors route their portfolio companies to us first — a captive pipeline of enterprises ready to deploy from day one.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK / DEPLOYMENT EXAMPLES -->
+<section class="block dark" id="work">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow on-dark">What deployment looks like</span>
+      <h2>From experiment to operating system.</h2>
+      <p>Representative engagements of the kind ForwardDeploy is built to run — embedded teams, real workflows, results the business can measure.</p>
+    </div>
+    <div class="cases">
+      <div class="case reveal" style="background:var(--ink-2); border-color:var(--hair-on-dark);">
+        <div class="who">National financial group</div>
+        <div class="headline" style="color:var(--white);">An AI-native advisory floor, deployed across wealth and insurance operations.</div>
+        <p style="color:var(--mute-on-dark); font-size:15.5px;">Starting with one advisory workflow, an embedded team built and shipped an AI co-pilot into production, then expanded it across business lines servicing millions of clients.</p>
+        <div class="metric">
+          <div class="m"><div class="v" style="color:var(--lime);">9 wks</div><div class="l" style="color:var(--mute-on-dark);">Pilot to production</div></div>
+          <div class="m"><div class="v" style="color:var(--lime);">25k+</div><div class="l" style="color:var(--mute-on-dark);">Employees served</div></div>
+        </div>
+      </div>
+      <div class="case reveal" style="background:var(--ink-2); border-color:var(--hair-on-dark);">
+        <div class="who">Crown corporation</div>
+        <div class="headline" style="color:var(--white);">Sovereign-grade citizen services, built on Canadian-controlled infrastructure.</div>
+        <p style="color:var(--mute-on-dark); font-size:15.5px;">A forward deployed team replaced a backlog-prone manual process with an AI system that keeps every byte of data in Canada — proving impact on one program before scaling government-wide.</p>
+        <div class="metric">
+          <div class="m"><div class="v" style="color:var(--lime);">70%</div><div class="l" style="color:var(--mute-on-dark);">Handling time cut</div></div>
+          <div class="m"><div class="v" style="color:var(--lime);">100%</div><div class="l" style="color:var(--mute-on-dark);">Data kept in-country</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPLOYMENT TO PRODUCT -->
+<section class="block" id="product">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">From deployment to platform</span>
+      <h2>Every engagement makes the next one faster.</h2>
+      <p>Successful deployments generate repeatable patterns. We capture them as reusable assets — accelerators, evaluation harnesses and deployment playbooks — so each client benefits from everything we've shipped before.</p>
+    </div>
+    <div class="flow">
+      <div class="flow-step reveal"><div class="fn">Deploy</div><h3>Solve one real problem</h3><p>An embedded team ships a working system into a single high-value workflow.</p></div>
+      <div class="flow-step reveal"><div class="fn">Pattern</div><h3>Find what repeats</h3><p>We identify the components and methods that generalize beyond the first use case.</p></div>
+      <div class="flow-step reveal"><div class="fn">Productize</div><h3>Build reusable assets</h3><p>Patterns become accelerators, eval tooling and playbooks owned by ForwardDeploy.</p></div>
+      <div class="flow-step reveal"><div class="fn">Scale</div><h3>Compound across clients</h3><p>The next deployment starts further ahead — faster, cheaper, more reliable.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BACKED / CAPITAL -->
+<section class="block dark" id="backed">
+  <div class="wrap backed">
+    <div class="reveal">
+      <span class="eyebrow on-dark">Backing</span>
+      <h2 style="font-size:clamp(30px,4.4vw,52px); margin-top:18px;">Capital and distribution, aligned from day one.</h2>
+      <p style="margin-top:22px; font-size:18px; color:var(--mute-on-dark); max-width:48ch;">ForwardDeploy has raised <b style="color:var(--white); font-weight:600;">$100M+</b> from Sagard, RBC, BDC and Constellation. Our investors aren't passive — their portfolio companies and operating businesses are our first customers, giving us a captive enterprise pipeline and aligning every dollar with deployment in the real economy.</p>
+    </div>
+    <div class="backed-points reveal">
+      <div class="bp"><h3>Sagard — strategic anchor</h3><p>A lead investor whose mandate is accelerating AI adoption across financial services. Our market, written into their thesis.</p></div>
+      <div class="bp"><h3>RBC — bank &amp; customer</h3><p>A founding financial partner that backs us with capital and stands up as a flagship enterprise customer from day one.</p></div>
+      <div class="bp"><h3>BDC — sovereign mandate</h3><p>Federal backing that opens the public sector and anchors our Canadian data-residency and sovereignty thesis.</p></div>
+      <div class="bp"><h3>Constellation — distribution</h3><p>A vast portfolio of software and enterprise businesses to deploy into, with the operating discipline to match.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="block" id="team">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Leadership</span>
+      <h2>Operators and capital, in their own lanes.</h2>
+      <p>A company run by the people who build it, with a partner whose job is to bring the capital and stay out of the way.</p>
+    </div>
+    <div class="team">
+      <div class="person reveal"><div class="av"><span class="ini">TT</span></div><h3>Tom Taubkin</h3><div class="role">Chief Executive Officer</div><p>Founder of Boosted and Float, ex-Coinbase, Waterloo CS/Math. Tom runs the company — clients, delivery and product.</p></div>
+      <div class="person reveal"><div class="av"><span class="ini">EP</span></div><h3>Esther Park</h3><div class="role">Chief Operating Officer</div><p>Co-founder and operating lead. Esther scales the engineering org and the engagements that deliver for clients.</p></div>
+      <div class="person reveal"><div class="av"><span class="ini">FP</span></div><h3>Founding Partner</h3><div class="role">Capital &amp; Partnerships</div><p>Leads institutional relationships and capital strategy — bringing the investors and the distribution, supporting the operators.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final" id="contact">
+  <div class="wrap reveal">
+    <h2>Let's get your AI out of the pilot.</h2>
+    <p>Tell us the workflow that matters most. We'll put a forward deployed team on it.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="mailto:hello@forwarddeploy.ai">Start a deployment <span class="arr">↗</span></a>
+      <a class="btn btn-ghost" href="mailto:careers@forwarddeploy.ai">Join the team</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="brand"><span class="dot"></span>ForwardDeploy</div>
+        <p>Canada's AI deployment company. Forward deployed engineering that takes enterprise AI from pilot to production.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4>Company</h4>
+          <a href="#approach">Approach</a>
+          <a href="#sectors">Sectors</a>
+          <a href="#work">Work</a>
+          <a href="#team">Team</a>
+        </div>
+        <div class="foot-col">
+          <h4>Connect</h4>
+          <a href="mailto:hello@forwarddeploy.ai">Contact</a>
+          <a href="mailto:careers@forwarddeploy.ai">Careers</a>
+          <a href="#backed">Backing</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 ForwardDeploy. A Canadian company.</span>
+      <span>Concept site · Privacy · Terms</span>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /#site -->
+
+<script>
+  // ---------- GATE ----------
+  // SHA-256 of 'baseball' (case-insensitive).
+  const PASS_HASH = 'a01edad91c00abe7be5b72b5e36bf4ce3c6f26e8bce3340eba365642813ab8b6';
+  const SESSION_KEY = 'fd_shed_session_v1';
+
+  async function sha256(text) {
+    const buf = new TextEncoder().encode(text);
+    const hash = await crypto.subtle.digest('SHA-256', buf);
+    return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  const body = document.body;
+  const gateForm = document.getElementById('fdgate-form');
+  const gatePass = document.getElementById('fdgate-pass');
+  const gateSubmit = document.getElementById('fdgate-submit');
+  const gateErr = document.getElementById('fdgate-error');
+  let siteInitialised = false;
+
+  function setGateError(msg) {
+    gateErr.textContent = msg || ' ';
+    gateErr.classList.toggle('visible', !!msg);
+  }
+
+  function unlock() {
+    body.classList.remove('gated');
+    window.scrollTo(0, 0);
+    initSite();
+  }
+
+  try {
+    if (sessionStorage.getItem(SESSION_KEY) === 'ok' || localStorage.getItem(SESSION_KEY) === 'ok') {
+      unlock();
+    }
+  } catch (_) {}
+
+  gateForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    setGateError('');
+    gateSubmit.disabled = true;
+    gateSubmit.textContent = 'Verifying…';
+    const pass = gatePass.value.trim().toLowerCase();
+    await new Promise(r => setTimeout(r, 320));
+    try {
+      const hash = await sha256(pass);
+      if (hash === PASS_HASH) {
+        try { localStorage.setItem(SESSION_KEY, 'ok'); sessionStorage.setItem(SESSION_KEY, 'ok'); } catch (_) {}
+        gateSubmit.textContent = 'Welcome';
+        setTimeout(unlock, 240);
+      } else {
+        gateSubmit.disabled = false;
+        gateSubmit.textContent = 'Enter';
+        setGateError('That isn’t the password.');
+        gatePass.value = '';
+        gatePass.focus();
+      }
+    } catch (err) {
+      gateSubmit.disabled = false;
+      gateSubmit.textContent = 'Enter';
+      setGateError('Something went wrong. Please try again.');
+    }
+  });
+
+  // ---------- SITE (initialised after unlock so layout-dependent
+  // observers run against a visible #site) ----------
+  function initSite() {
+    if (siteInitialised) return;
+    siteInitialised = true;
+
+    const nav = document.getElementById('nav');
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 8);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    const toggle = document.getElementById('navtoggle');
+    const linksEl = document.getElementById('navlinks');
+    toggle.addEventListener('click', () => linksEl.classList.toggle('open'));
+    linksEl.querySelectorAll('a').forEach(a => a.addEventListener('click', () => linksEl.classList.remove('open')));
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      el.style.transitionDelay = (Math.min(i % 4, 3) * 0.06) + 's';
+      io.observe(el);
+    });
+  }
+</script>
+
+</body>
+</html>
