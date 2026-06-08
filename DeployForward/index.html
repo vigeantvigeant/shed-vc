@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ForwardDeploy — On the frontlines of AI deployment</title>
+<title>DeployForward — On the frontlines of AI deployment</title>
 <meta name="description" content="Canada's AI deployment company. We embed forward deployed engineers inside enterprises to take AI from pilot to production.">
 <meta name="robots" content="noindex, nofollow">
-<meta property="og:title" content="ForwardDeploy">
+<meta property="og:title" content="DeployForward">
 <meta property="og:description" content="On the frontlines of AI deployment. Forward deployed engineering for Canadian enterprise.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -177,6 +177,8 @@
   .logo-item:hover { opacity: 1; transform: translateY(-2px); }
   .logo-item .lw { font-family: var(--display); font-weight: 700; letter-spacing: -0.01em; font-size: 26px; line-height: 1; }
   .logo-item svg { display: block; flex: 0 0 auto; }
+  .logos-partners { gap: 48px; }
+  .logos-partners .lw { font-size: 23px; }
 
   /* principles */
   .principles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; margin-top: 64px; border: 1px solid var(--hair-on-dark); border-radius: 20px; overflow: hidden; }
@@ -227,6 +229,17 @@
   .person h3 { font-size: 21px; margin: 20px 0 4px; }
   .person .role { font-family: var(--display); font-weight: 500; font-size: 14px; color: var(--blue); }
   .person p { font-size: 14.5px; color: var(--mute); margin-top: 12px; }
+  .person .av.mystery { background: repeating-linear-gradient(135deg, var(--ink), var(--ink) 11px, var(--ink-2) 11px, var(--ink-2) 22px); }
+  .person .av.mystery .ini { color: rgba(212,255,0,0.85); }
+
+  .team-lead { display: grid; grid-template-columns: 230px 1fr; gap: 40px; align-items: center; margin-top: 60px; padding: 34px; border: 1px solid var(--hair); border-radius: 22px; background: var(--paper); }
+  .team-lead .lead-av { position: relative; width: 230px; height: 230px; border-radius: 20px; background: linear-gradient(150deg, var(--ink), var(--blue-deep)); display: flex; align-items: flex-end; padding: 24px; }
+  .team-lead .lead-av .ini { font-family: var(--display); font-weight: 700; font-size: 62px; color: var(--lime); letter-spacing: -0.02em; }
+  .team-lead .ceo-badge { position: absolute; top: 18px; right: 18px; font-family: var(--display); font-weight: 700; font-size: 13px; letter-spacing: 0.12em; color: var(--ink); background: var(--lime); padding: 8px 14px; border-radius: 100px; box-shadow: 0 6px 18px rgba(212,255,0,0.35); }
+  .team-lead .lead-body h3 { font-size: 30px; }
+  .team-lead .lead-body .role { font-family: var(--display); font-weight: 500; font-size: 15px; color: var(--blue); margin-top: 6px; }
+  .team-lead .lead-body p { font-size: 16px; color: var(--mute); margin-top: 16px; max-width: 62ch; }
+  .team-lead + .team { margin-top: 24px; }
 
   /* CTA */
   .final { background: var(--blue); color: var(--white); text-align: center; padding: 130px 0; position: relative; overflow: hidden; }
@@ -260,6 +273,10 @@
   @media (max-width: 900px) {
     .split, .backed { grid-template-columns: 1fr; gap: 36px; }
     .sectors, .team, .flow { grid-template-columns: 1fr; }
+    .team-lead { grid-template-columns: 1fr; gap: 24px; text-align: center; justify-items: center; }
+    .team-lead .lead-av { width: 160px; height: 160px; }
+    .team-lead .lead-av .ini { font-size: 46px; }
+    .team-lead .lead-body p { margin-left: auto; margin-right: auto; }
     .flow-step { padding: 24px 0; border-top: 1px solid var(--hair); }
     .flow-step:first-child { border-top: none; }
     .flow-step::after { display: none; }
@@ -329,7 +346,7 @@
 <!-- GATE -->
 <div class="fd-gate" id="fdgate">
   <div class="fd-gate-inner">
-    <div class="fd-gate-brand"><span class="dot"></span>ForwardDeploy</div>
+    <div class="fd-gate-brand"><span class="dot"></span>DeployForward</div>
     <span class="eyebrow on-dark">Private preview</span>
     <h1 class="fd-gate-title">On the frontlines of <span class="grad">AI deployment.</span></h1>
     <p class="fd-gate-sub">This preview is private. Enter the password to continue.</p>
@@ -338,7 +355,7 @@
       <button type="submit" class="fd-gate-submit" id="fdgate-submit">Enter</button>
       <div class="fd-gate-error" id="fdgate-error">&nbsp;</div>
     </form>
-    <div class="fd-gate-foot">ForwardDeploy · Concept site</div>
+    <div class="fd-gate-foot">DeployForward · Concept site</div>
   </div>
 </div>
 
@@ -347,9 +364,10 @@
 <!-- NAV -->
 <nav id="nav">
   <div class="wrap nav-inner">
-    <a class="brand" href="#top"><span class="dot"></span>ForwardDeploy</a>
+    <a class="brand" href="#top"><span class="dot"></span>DeployForward</a>
     <div class="nav-links" id="navlinks">
       <a href="#approach">Approach</a>
+      <a href="#partners">Partners</a>
       <a href="#sectors">Sectors</a>
       <a href="#work">Work</a>
       <a href="#backed">Backing</a>
@@ -376,7 +394,7 @@
     <div class="hero-stats reveal">
       <div class="stat"><div class="num">50<span>+</span></div><div class="lab">Forward deployed engineers, day one</div></div>
       <div class="stat"><div class="num">$100<span>M+</span></div><div class="lab">Raised from Canadian institutions</div></div>
-      <div class="stat"><div class="num">4<span>.</span></div><div class="lab">Anchor backers: Sagard, RBC, BDC, Constellation</div></div>
+      <div class="stat"><div class="num">#1<span>.</span></div><div class="lab">Largest dedicated FDE team in Canada</div></div>
       <div class="stat"><div class="num">100<span>%</span></div><div class="lab">Canadian data residency &amp; control</div></div>
     </div>
   </div>
@@ -386,8 +404,8 @@
 <div class="announce">
   <div class="wrap">
     <span class="tag">Acquisition</span>
-    <div class="msg"><b>ForwardDeploy has acquired Boosted</b> — the AI engineering firm becomes the founding team behind Canada's AI deployment company.</div>
-    <a class="more" href="#origin">Read more ↗</a>
+    <div class="msg"><b>DeployForward has acquired Boosted</b> — the AI engineering firm becomes the founding team behind Canada's AI deployment company.</div>
+    <a class="more" href="news/">Read more ↗</a>
   </div>
 </div>
 
@@ -430,11 +448,11 @@
     <div class="reveal">
       <span class="eyebrow">Founding acquisition</span>
       <h2 style="font-size:clamp(30px,4.4vw,52px); margin-top:18px;">A real engineering team, not a slide deck.</h2>
-      <p style="margin-top:22px; font-size:18px; color:var(--mute); max-width:48ch;">ForwardDeploy was founded on the acquisition of Boosted — an AI engineering firm shipping production software across healthcare, fintech and insurance since 2023. We didn't assemble a team to chase the moment. We acquired a proven one and gave it institutional capital, a captive enterprise pipeline, and a national mandate.</p>
+      <p style="margin-top:22px; font-size:18px; color:var(--mute); max-width:48ch;">DeployForward was founded on the acquisition of Boosted — an AI engineering firm shipping production software across healthcare, fintech and insurance since 2023. We didn't assemble a team to chase the moment. We acquired a proven one and gave it institutional capital, a captive enterprise pipeline, and a national mandate.</p>
       <div class="acq-badge">
         <span class="acq-from">Boosted</span>
         <span class="acq-arrow">→</span>
-        <span class="acq-to"><span class="acq-dot"></span>ForwardDeploy</span>
+        <span class="acq-to"><span class="acq-dot"></span>DeployForward</span>
         <span class="acq-note">Acquired 2026</span>
       </div>
     </div>
@@ -454,9 +472,13 @@
 <section class="block dark" id="approach">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow on-dark">Forward deployed engineering</span>
+      <span class="eyebrow on-dark">What is forward deployed engineering?</span>
       <h2>How AI actually reaches production.</h2>
-      <p>Forward deployed engineering is how we bring AI systems into production for complex, real-world problems. Rather than starting from a general-purpose product, our teams work directly with your people to solve a specific challenge, prove measurable impact, then find the patterns worth scaling.</p>
+      <p>Forward deployed engineers (FDEs) are senior engineers we embed directly inside your organization — not a managed-service ticket queue, and not a generic product you're left to integrate. They sit with your people, learn the real problem, and build AI systems into the workflows your business actually runs on. It's the model the frontier labs now use to deploy AI in the real world, and it's how we take a project from pilot to production.</p>
+    </div>
+
+    <div class="section-head reveal" style="margin-top:8px;">
+      <span class="eyebrow on-dark">How FDE teams work</span>
     </div>
 
     <div class="principles">
@@ -464,6 +486,20 @@
       <div class="principle reveal"><div class="pn">02</div><h3>Prioritize speed and real impact</h3><p>Early value in weeks, not quarters. We ship into production fast, then iterate against results that the business can see.</p></div>
       <div class="principle reveal"><div class="pn">03</div><h3>Work beside domain experts</h3><p>Our engineers sit with your team. The people who know the work shape the system — that's where reliable AI comes from.</p></div>
       <div class="principle reveal"><div class="pn">04</div><h3>Deliver early, then scale</h3><p>We prove it on one workflow, capture the pattern, and expand across the organization with confidence and controls.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section class="logostrip" id="partners">
+  <div class="wrap">
+    <p class="logostrip-label">Model-agnostic by design · we deploy with the best, <b>including Google, Stripe, Cohere, Anthropic &amp; OpenAI</b></p>
+    <div class="logos logos-partners">
+      <div class="logo-item"><span class="lw">Google</span></div>
+      <div class="logo-item"><span class="lw">Stripe</span></div>
+      <div class="logo-item"><span class="lw">Cohere</span></div>
+      <div class="logo-item"><span class="lw">Anthropic</span></div>
+      <div class="logo-item"><span class="lw">OpenAI</span></div>
     </div>
   </div>
 </section>
@@ -493,7 +529,7 @@
     <div class="section-head reveal">
       <span class="eyebrow on-dark">What deployment looks like</span>
       <h2>From experiment to operating system.</h2>
-      <p>Representative engagements of the kind ForwardDeploy is built to run — embedded teams, real workflows, results the business can measure.</p>
+      <p>Representative engagements of the kind DeployForward is built to run — embedded teams, real workflows, results the business can measure.</p>
     </div>
     <div class="cases">
       <div class="case reveal" style="background:var(--ink-2); border-color:var(--hair-on-dark);">
@@ -529,7 +565,7 @@
     <div class="flow">
       <div class="flow-step reveal"><div class="fn">Deploy</div><h3>Solve one real problem</h3><p>An embedded team ships a working system into a single high-value workflow.</p></div>
       <div class="flow-step reveal"><div class="fn">Pattern</div><h3>Find what repeats</h3><p>We identify the components and methods that generalize beyond the first use case.</p></div>
-      <div class="flow-step reveal"><div class="fn">Productize</div><h3>Build reusable assets</h3><p>Patterns become accelerators, eval tooling and playbooks owned by ForwardDeploy.</p></div>
+      <div class="flow-step reveal"><div class="fn">Productize</div><h3>Build reusable assets</h3><p>Patterns become accelerators, eval tooling and playbooks owned by DeployForward.</p></div>
       <div class="flow-step reveal"><div class="fn">Scale</div><h3>Compound across clients</h3><p>The next deployment starts further ahead — faster, cheaper, more reliable.</p></div>
     </div>
   </div>
@@ -541,13 +577,13 @@
     <div class="reveal">
       <span class="eyebrow on-dark">Backing</span>
       <h2 style="font-size:clamp(30px,4.4vw,52px); margin-top:18px;">Capital and distribution, aligned from day one.</h2>
-      <p style="margin-top:22px; font-size:18px; color:var(--mute-on-dark); max-width:48ch;">ForwardDeploy has raised <b style="color:var(--white); font-weight:600;">$100M+</b> from Sagard, RBC, BDC and Constellation. Our investors aren't passive — their portfolio companies and operating businesses are our first customers, giving us a captive enterprise pipeline and aligning every dollar with deployment in the real economy.</p>
+      <p style="margin-top:22px; font-size:18px; color:var(--mute-on-dark); max-width:48ch;">DeployForward has raised <b style="color:var(--white); font-weight:600;">$100M+</b>, including Sagard, RBC, BDC and Constellation. Our investors aren't passive — their portfolio companies and operating businesses are our first customers, giving us a captive enterprise pipeline and aligning every dollar with deployment in the real economy.</p>
     </div>
     <div class="backed-points reveal">
-      <div class="bp"><h3>Sagard — strategic anchor</h3><p>A lead investor whose mandate is accelerating AI adoption across financial services. Our market, written into their thesis.</p></div>
-      <div class="bp"><h3>RBC — bank &amp; customer</h3><p>A founding financial partner that backs us with capital and stands up as a flagship enterprise customer from day one.</p></div>
-      <div class="bp"><h3>BDC — sovereign mandate</h3><p>Federal backing that opens the public sector and anchors our Canadian data-residency and sovereignty thesis.</p></div>
-      <div class="bp"><h3>Constellation — distribution</h3><p>A vast portfolio of software and enterprise businesses to deploy into, with the operating discipline to match.</p></div>
+      <div class="bp"><h3>Sagard</h3><p>A lead investor whose mandate is accelerating AI adoption across financial services. Our market, written into their thesis.</p></div>
+      <div class="bp"><h3>RBC</h3><p>A founding financial partner that backs us with capital and stands up as a flagship enterprise customer from day one.</p></div>
+      <div class="bp"><h3>BDC</h3><p>Federal backing that opens the public sector and anchors our Canadian data-residency and sovereignty thesis.</p></div>
+      <div class="bp"><h3>Constellation</h3><p>A vast portfolio of software and enterprise businesses to deploy into, with the operating discipline to match.</p></div>
     </div>
   </div>
 </section>
@@ -557,13 +593,21 @@
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">Leadership</span>
-      <h2>Operators and capital, in their own lanes.</h2>
-      <p>A company run by the people who build it, with a partner whose job is to bring the capital and stay out of the way.</p>
+      <h2>The team taking AI to production.</h2>
+      <p>A proven engineering team — the largest dedicated forward deployed engineering bench in Canada — led by the founders who built it.</p>
+    </div>
+    <div class="team-lead reveal">
+      <div class="lead-av"><span class="ini">TT</span><span class="ceo-badge">CEO</span></div>
+      <div class="lead-body">
+        <h3>Tom Taubkin</h3>
+        <div class="role">Founder &amp; Chief Executive Officer</div>
+        <p>Founder of Boosted and Float, ex-Coinbase, Waterloo CS &amp; Math. Tom built Boosted from zero to the largest dedicated FDE team in Canada in roughly three and a half years, and runs the company end to end — clients, delivery and product. The CEO Canadian institutions already know.</p>
+      </div>
     </div>
     <div class="team">
-      <div class="person reveal"><div class="av"><span class="ini">TT</span></div><h3>Tom Taubkin</h3><div class="role">Chief Executive Officer</div><p>Founder of Boosted and Float, ex-Coinbase, Waterloo CS/Math. Tom runs the company — clients, delivery and product.</p></div>
       <div class="person reveal"><div class="av"><span class="ini">EP</span></div><h3>Esther Park</h3><div class="role">Chief Operating Officer</div><p>Co-founder and operating lead. Esther scales the engineering org and the engagements that deliver for clients.</p></div>
-      <div class="person reveal"><div class="av"><span class="ini">FP</span></div><h3>Founding Partner</h3><div class="role">Capital &amp; Partnerships</div><p>Leads institutional relationships and capital strategy — bringing the investors and the distribution, supporting the operators.</p></div>
+      <div class="person reveal"><div class="av"><span class="ini">SI</span></div><h3>Shady Ibrahim</h3><div class="role">Head of Engineering</div><p>Leads the forward deployed engineering bench — the senior engineers embedded inside clients, taking AI from pilot to production.</p></div>
+      <div class="person reveal"><div class="av mystery"><span class="ini">?</span></div><h3>Mystery Guest</h3><div class="role">To be announced</div><p>A senior leader joining to anchor the next phase of growth. Details to follow.</p></div>
     </div>
   </div>
 </section>
@@ -574,8 +618,8 @@
     <h2>Let's get your AI out of the pilot.</h2>
     <p>Tell us the workflow that matters most. We'll put a forward deployed team on it.</p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="mailto:hello@forwarddeploy.ai">Start a deployment <span class="arr">↗</span></a>
-      <a class="btn btn-ghost" href="mailto:careers@forwarddeploy.ai">Join the team</a>
+      <a class="btn btn-primary" href="mailto:hello@deployforward.ai">Start a deployment <span class="arr">↗</span></a>
+      <a class="btn btn-ghost" href="mailto:careers@deployforward.ai">Join the team</a>
     </div>
   </div>
 </section>
@@ -585,7 +629,7 @@
   <div class="wrap">
     <div class="foot-top">
       <div class="foot-brand">
-        <div class="brand"><span class="dot"></span>ForwardDeploy</div>
+        <div class="brand"><span class="dot"></span>DeployForward</div>
         <p>Canada's AI deployment company. Forward deployed engineering that takes enterprise AI from pilot to production.</p>
       </div>
       <div class="foot-cols">
@@ -598,14 +642,14 @@
         </div>
         <div class="foot-col">
           <h4>Connect</h4>
-          <a href="mailto:hello@forwarddeploy.ai">Contact</a>
-          <a href="mailto:careers@forwarddeploy.ai">Careers</a>
+          <a href="mailto:hello@deployforward.ai">Contact</a>
+          <a href="mailto:careers@deployforward.ai">Careers</a>
           <a href="#backed">Backing</a>
         </div>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 ForwardDeploy. A Canadian company.</span>
+      <span>© 2026 DeployForward. A Canadian company.</span>
       <span>Concept site · Privacy · Terms</span>
     </div>
   </div>
